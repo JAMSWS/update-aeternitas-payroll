@@ -32,23 +32,45 @@ Route::prefix('aeternitas')->group(function() {
     Route::get('/employee/create', 'create')->name('employees.create');
     Route::post('/employee', 'store')->name('employees.store');
     Route::get('/employee/{id}/edit', 'edit')->name('employees.edit');
+    Route::put('/employee/{id}', 'update')->name('employees.update');
     Route::delete('/employee/{id}', 'destroy')->name('employees.destroy');
 
+    });
 
 
+    //this is for add, edit and delete department
+    Route::controller(App\Http\Controllers\departmentlistController::class)->group(function () {
+    Route::get('/department', 'index')->name('department.index');
+    Route::get('/department/create', 'create')->name('department.create');
+    Route::post('/department', 'store')->name('department.store');
+    Route::get('/department/{id}/edit', 'edit')->name('department.edit');
+    Route::put('/department/{id}', 'update')->name('department.update');
+    Route::delete('/department/{id}', 'destroy')->name('department.destroy');
 
 
 
     });
 
+    //this is for add, edit and delete position :)
+
+    Route::controller(App\Http\Controllers\positionlistController::class)->group(function () {
+    Route::get('/position', 'index')->name('position.index');
+    Route::get('/position/create', 'create')->name('position.create');
+    Route::post('/position', 'store')->name('position.store');
+    Route::get('/position/{id}/edit', 'edit')->name('position.edit');
+    Route::put('/position/{id}', 'update')->name('position.update');
+    Route::delete('/position/{id}', 'destroy')->name('position.destroy');
+    });
 
 
+
+
+
+    
 });
 
 
-
-
-
 // Route::get('/addemployee', [App\Http\Controllers\AddemployeeController::class, 'index']);
+
 
 require __DIR__.'/auth.php';

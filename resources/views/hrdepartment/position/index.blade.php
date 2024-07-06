@@ -1,6 +1,6 @@
 @extends('layouts.hrdepartment')
 
-@section('title', 'Employee List | Aeternitas')
+@section('title', 'Position List | Aeternitas')
 
 @section('content')
     <div class="row">
@@ -11,47 +11,39 @@
         <div class="rounded card">
           <div class="bg-white card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <h4>Employee List</h4>
-                <a href="{{ url('aeternitas/employee/create') }}" class="text-white btn btn-danger">Add Employee</a>
+                <h4>Position List</h4>
+                <a href="{{ url('aeternitas/position/create') }}" class="text-white btn btn-danger">Add Position</a>
             </div>
           </div>
           <div class="card-body">
             <table  id="dataTable" class="table table-bordered table-stripped table-hover removeShowEntry">
                 <thead>
                     <tr>
-                        <th>Employee Number</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Department</th>
+                        <th>Position Number</th>
                         <th>Position</th>
-                        <th>Basic Pay</th>
                         <th>Action</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($employees as $employee)
+                    @forelse ($position as $positions)
                     <tr>
-                        <td>{{ $employee->custom_id }}</td>
-                        <td>{{ $employee->first_name }}</td>
-                        <td>{{ $employee->last_name }}</td>
-                        <td>{{ $employee->department_name }}</td>
-                        <td>{{ $employee->position_name }}</td>
-                        <td>{{ $employee->basic_pay }}</td>
+                        <td>{{ $positions->id }}</td>
+                        <td>{{ $positions->position }}</td>
                         <td>
-                            <a href="{{ route('employees.edit', $employee->id) }}" class="text-white btn btn-success">Edit</a>
-                            <form action="{{ route('employees.destroy', $employee->id) }}" method="POST" style="display:inline-block;">
+                            <a href="{{ route('position.edit', $positions->id) }}" class="text-white btn btn-success">Edit</a>
+                            <form action="{{ route('position.destroy', $positions->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" onclick="return confirm('Are you sure you want to delete this data? There is no way back!')" class="text-white btn btn-danger">Delete</button>
                             </form>
                         </td>
                     </tr>
-                @empty
+                    @empty
                     <tr>
-                        <td colspan="7">No Employees Available</td>
+                        <td colspan="7">No Positions Available</td>
                     </tr>
-                @endforelse
+                    @endforelse
                 </tbody>
             </table>
           </div>

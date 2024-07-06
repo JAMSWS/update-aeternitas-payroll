@@ -67,24 +67,47 @@ class hrdepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(hrdepartment $hrdepartment)
+    public function edit(int $employee_id)
     {
         //
+        $employee = hrdepartment::findOrFail($employee_id);
+        return view('hrdepartment.employee.edit', compact('employee'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, hrdepartment $hrdepartment)
+    public function update(Request $request, hrdepartment $hrdepartment, int $employee_id)
     {
-        //
+        
+        $validatedData = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'suffix' => 'required',
+            'department_name' => 'required',
+            'position_name' => 'required',
+            'basic_pay' => 'required|integer',
+            'custom_id' => 'required|string|unique:employee,custom_id,'.$employee_id,
+        ]);
+
+        $employee = hrdepartment::findOrFail($employee_id);
+        $employee->fill($validatedData);
+        $employee->save();
+
+        return redirect('/aeternitas/employee')->with('message', 'Employee Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(hrdepartment $hrdepartment)
+    public function destroy(hrdepartment $hrdepartment,int $employee_id)
     {
         //
+
+        $employee = hrdepartment::findOrFail($employee_id);
+
+        $employee->delete();
+
+        return redirect()->route('employees.index')->with('message', 'Employee Deleted Successfully');
     }
 }

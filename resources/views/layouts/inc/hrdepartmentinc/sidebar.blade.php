@@ -26,36 +26,51 @@
           <li><a class="link_name" href="/dashboard">Dashboard</a></li>
         </ul>
       </li>
-      <li>
+
+
+      <li class="nav-item ">
         <div class="iocn-link">
-          <a href="#">
+          <a href="{{ url('/aeternitas/employee') }}">
             <i class='bx bx-collection' ></i>
             <span class="link_name">Employee List</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
-        </div>
-        <ul class="sub-menu">
-
-          <li><a href="{{ url('/aeternitas/employee') }}">Employee</a></li>
-          {{-- <li><a href="#">View Product</a></li> --}}
-
-        </ul>
-      </li>
-      {{-- <li class="nav-item ">
-        <div class="iocn-link">
-          <a href="#">
-            <i class='bx bx-book-alt' ></i>
-            <span class="link_name">Order</span>
           </a>
 
         </div>
         <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Order</a></li>
+          <li><a class="link_name" href="{{ url('/aeternitas/employee') }}">Employee List</a></li>
 
         </ul>
       </li>
 
+     <li class="nav-item ">
+        <div class="iocn-link">
+          <a href="{{ url('/aeternitas/department') }}">
+            <i class='bx bx-book-alt' ></i>
+            <span class="link_name">Department List</span>
+          </a>
 
+        </div>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="{{ url('/aeternitas/department') }}">Department List</a></li>
+
+        </ul>
+      </li>
+
+      <li class="nav-item ">
+        <div class="iocn-link">
+          <a href="{{ url('#') }}">
+            <i class='bx bx-history' ></i>
+            <span class="link_name">Position List</span>
+          </a>
+
+        </div>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="{{ url('/aeternitas/position') }}">Position List</a></li>
+
+        </ul>
+      </li>
+
+ {{--
       <li>
         <div class="iocn-link">
           <a href="#">
