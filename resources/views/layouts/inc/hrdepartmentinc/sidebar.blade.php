@@ -58,7 +58,7 @@
 
       <li class="nav-item ">
         <div class="iocn-link">
-          <a href="{{ url('#') }}">
+          <a href="{{ url('/aeternitas/position') }}">
             <i class='bx bx-history' ></i>
             <span class="link_name">Position List</span>
           </a>
@@ -67,6 +67,17 @@
         <ul class="sub-menu blank">
           <li><a class="link_name" href="{{ url('/aeternitas/position') }}">Position List</a></li>
 
+        </ul>
+      </li>
+
+
+      <li class="nav-item">
+        <a href="{{ url('/aeternitas/attendance') }}">
+          <i class='bx bx-plug'></i>
+          <span class="link_name">Attendance List</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="{{ url('/aeternitas/attendance') }}">Attendance List</a></li>
         </ul>
       </li>
 
@@ -86,15 +97,6 @@
         </ul>
       </li>
 
-      <li class="nav-item">
-        <a href="#">
-          <i class='bx bx-history'></i>
-          <span class="link_name">Schedules</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Schedules</a></li>
-        </ul>
-      </li>
       <li class="nav-item">
         <a href="#"> <!-- Using the named route here -->
             <i class='bx bx-history'></i>

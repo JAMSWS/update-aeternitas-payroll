@@ -1,6 +1,6 @@
 @extends('layouts.hrdepartment')
 
-@section('title', 'Employee List | Aeternitas')
+@section('title', 'Attendance List | Aeternitas')
 
 @section('content')
 
@@ -14,7 +14,7 @@
                 </h4> --}}
             </div>
             <div class="card-body">
-                <h4>Add Employee</h4>
+                <h4>Add Attendance</h4>
                 @if ($errors->any())
                 <div class="alert alert-warning">
                     @foreach ($errors->all() as $errors)
@@ -25,53 +25,33 @@
                 </div>
                 @endif
 
-                <form action="{{ url('aeternitas/employee') }}" method="POST">
+                <form action="{{ url('aeternitas/attendance') }}" method="POST">
                     @csrf
 
-
-                {{-- <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
-                    </li>
-
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-tab-pane" type="button" role="tab" aria-controls="details-tab-pane" aria-selected="false">Details</button>
-                    </li>
-
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-tab-pane" type="button" role="tab" aria-controls="image-tab-pane" aria-selected="false">Product Image</button>
-                      </li>
-
-
-
-                  </ul> --}}
                   <div class="tab-content" id="myTabContent">
                     <div class="p-3 border tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                         <div class="mb-3">
-                            <label>First Name</label>
-                            <input type="text" name="first_name" class="form-control" required>
-                            <label>Middle Name</label>
-                            <input type="text" name="suffix" class="form-control"required>
-                            <label>Last Name</label>
-                            <input type="text" name="last_name" class="form-control"required>
-                            <div class="mb-3">
-                            <label>Department</label>
-                            <select name="department_name" class="form-control">
-                                @foreach ($department as $departments)
-                                <option value="{{ $departments->department }}">{{ $departments->department }}</option>
+                            <label>Employee Name</label>
+                            <select name="employee_name" class="form-control">
+                                @foreach ($employees as $employees)
+                                <option value="{{ $employees->first_name }} {{ $employees->suffix }} {{ $employees->last_name }}">{{ $employees->first_name }} {{ $employees->suffix }} {{ $employees->last_name }}</option>
                                 @endforeach
                             </select>
-                            </div>
-                            {{-- <input type="text" name="department_name" class="form-control"required> --}}
-                            <label>Position</label>
-                            <select name="position_name" class="form-control">
-                                @foreach ($position as $positions)
-                                <option value="{{ $positions->position }}">{{ $positions->position }}</option>
-                                @endforeach
-                            </select>
-                            {{-- <input type="text" name="position_name" class="form-control"required> --}}
-                            <label>Basic Pay</label>
-                            <input type="number" name="basic_pay" class="form-control"required>
+                            {{-- <input type="text" name="last_name" class="form-control" required> --}}
+                            <label for="date">Date:</label>
+                            <input type="date" name="date" id="date" value="{{ date('Y-m-d') }}" class="form-control" required>
+                            <label>Time In</label>
+                            <input type="time" name="time_in" value="{{ date('H:i') }}" class="form-control"required>
+                            <label>Time Out</label>
+                            <input type="time" name="time_out" class="form-control"required>
+
+                            {{-- <label for="present">Present:</label>
+                            <select name="present" id="present" class="form-control">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option> --}}
+                </select>
+
+
                         </div>
                         {{-- <div class="mb-3">
                         <label>Description</label>

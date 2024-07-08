@@ -47,12 +47,8 @@ Route::prefix('aeternitas')->group(function() {
     Route::put('/department/{id}', 'update')->name('department.update');
     Route::delete('/department/{id}', 'destroy')->name('department.destroy');
 
-
-
     });
-
     //this is for add, edit and delete position :)
-
     Route::controller(App\Http\Controllers\positionlistController::class)->group(function () {
     Route::get('/position', 'index')->name('position.index');
     Route::get('/position/create', 'create')->name('position.create');
@@ -62,11 +58,18 @@ Route::prefix('aeternitas')->group(function() {
     Route::delete('/position/{id}', 'destroy')->name('position.destroy');
     });
 
+    //This is for attendance list
+    Route::controller(App\Http\Controllers\attendancelistController::class)->group(function () {
+    Route::get('/attendance', 'index')->name('attendance.index');
+    Route::get('/attendance/create', 'create')->name('attendance.create');
+    Route::post('/attendance', 'store')->name('attendance.store');
+    Route::get('/attendance/{id}/edit', 'edit')->name('attendance.edit');
+    Route::put('/attendance/{id}', 'update')->name('attendance.update');
+    Route::delete('/attendance/{id}', 'destroy')->name('attendance.destroy');
+
+    });
 
 
-
-
-    
 });
 
 

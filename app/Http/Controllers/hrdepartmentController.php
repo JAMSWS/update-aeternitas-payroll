@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\hrdepartment;
+use App\Models\positionlist;
 use Illuminate\Http\Request;
+use App\Models\departmentlist;
 use App\Http\Requests\StoreEmployeeRequest;
-
 
 class hrdepartmentController extends Controller
 {
@@ -24,7 +25,9 @@ class hrdepartmentController extends Controller
     public function create()
     {
         //
-        return view('hrdepartment.employee.create');
+        $department = departmentlist::all();
+        $position = positionlist::all();
+        return view('hrdepartment.employee.create',compact('department', 'position'));
     }
 
     /**
@@ -69,9 +72,10 @@ class hrdepartmentController extends Controller
      */
     public function edit(int $employee_id)
     {
-        //
+        $department = departmentlist::all();
+        $position = positionlist::all();
         $employee = hrdepartment::findOrFail($employee_id);
-        return view('hrdepartment.employee.edit', compact('employee'));
+        return view('hrdepartment.employee.edit', compact('employee','department','position'));
     }
 
     /**
@@ -79,7 +83,7 @@ class hrdepartmentController extends Controller
      */
     public function update(Request $request, hrdepartment $hrdepartment, int $employee_id)
     {
-        
+
         $validatedData = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',

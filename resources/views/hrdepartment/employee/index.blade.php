@@ -35,8 +35,22 @@
                         <td>{{ $employee->custom_id }}</td>
                         <td>{{ $employee->first_name }}</td>
                         <td>{{ $employee->last_name }}</td>
-                        <td>{{ $employee->department_name }}</td>
-                        <td>{{ $employee->position_name }}</td>
+                        {{-- <td>{{ $employee->department_name }}</td> --}}
+                        <td>
+                            @if ($employee->department_name)
+                            {{ $employee->department_name }}
+                            @else
+                            No Department
+                            @endif
+                        </td>
+                        {{-- <td>{{ $employee->position_name }}</td> --}}
+                        <td>
+                            @if ($employee->position_name)
+                            {{ $employee->position_name }}
+                            @else
+                            No Position
+                            @endif
+                        </td>
                         <td>{{ $employee->basic_pay }}</td>
                         <td>
                             <a href="{{ route('employees.edit', $employee->id) }}" class="text-white btn btn-success">Edit</a>
