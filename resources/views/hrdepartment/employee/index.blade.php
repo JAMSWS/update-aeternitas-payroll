@@ -25,6 +25,7 @@
                         <th>Department</th>
                         <th>Position</th>
                         <th>Basic Pay</th>
+                        <th>Monthly Allowance</th>
                         <th>Action</th>
 
                     </tr>
@@ -51,7 +52,8 @@
                             No Position
                             @endif
                         </td>
-                        <td>{{ $employee->basic_pay }}</td>
+                        <td>₱ {{ number_format($employee->basic_pay, 2) }}</td>
+                        <td>₱ {{ number_format($employee->allowance, 2) }}</td>
                         <td>
                             <a href="{{ route('employees.edit', $employee->id) }}" class="text-white btn btn-success">Edit</a>
                             <form action="{{ route('employees.destroy', $employee->id) }}" method="POST" style="display:inline-block;">

@@ -38,10 +38,18 @@ class hrdepartmentController extends Controller
         $validatedData = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'suffix' => 'required',
+            'suffix' => 'nullable|string',
             'department_name' => 'required',
             'position_name' => 'required',
-            'basic_pay' => 'required|integer',
+            'basic_pay' => 'required|numeric',
+            'allowance' => 'required|numeric',
+            'current_address' => 'nullable|string',
+            'phone_number' => 'nullable|regex:/^9[0-9]{9}$/',
+            'sex' => 'nullable|string',
+            'age' => 'nullable|numeric',
+            'per_month' => 'nullable|numeric',
+            'per_day' => 'nullable|numeric',
+            'per_bi_month' => 'nullable|numeric',
         ]);
 
         // Generate custom ID
@@ -87,11 +95,21 @@ class hrdepartmentController extends Controller
         $validatedData = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'suffix' => 'required',
+            'suffix' => 'nullable|string',
             'department_name' => 'required',
+            'current_address' => 'nullable|string',
+            'email_address' => 'nullable|string',
             'position_name' => 'required',
-            'basic_pay' => 'required|integer',
+            'basic_pay' => 'required|numeric',
+            'allowance' => 'required|numeric',
             'custom_id' => 'required|string|unique:employee,custom_id,'.$employee_id,
+            'phone_number' => 'nullable|regex:/^9[0-9]{9}$/',
+            'sex' => 'nullable|string',
+            'age' => 'nullable|numeric',
+            'per_month' => 'nullable|numeric',
+            'per_day' => 'nullable|numeric',
+            'per_bi_month' => 'nullable|numeric',
+
         ]);
 
         $employee = hrdepartment::findOrFail($employee_id);

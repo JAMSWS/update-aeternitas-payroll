@@ -24,10 +24,29 @@ class StoreEmployeeRequest extends FormRequest
         return [
             'first_name' => 'required',
             'last_name' => 'required',
-            'suffix' => 'required',
+            'suffix' => 'nullable|string',
             'department_name' => 'required',
             'position_name' => 'required',
-            'basic_pay' => 'required|integer',
+            'basic_pay' => 'required|numeric',
+            'allowance' => 'required|numeric',
+            'current_address' => 'nullable|string',
+            'email_address' => 'nullable|string',
+            'phone_number' => 'nullable|regex:/^9[0-9]{9}$/',
+            'sex' => 'nullable|string',
+            'age' => 'nullable|numeric',
+            'per_month' => 'nullable|numeric',
+            'per_day' => 'nullable|numeric',
+            'per_bi_month' => 'nullable|numeric',
+
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        if ($this->has('phone_number')) {
+            $this->merge([
+                'phone_number' => '+63' . $this->phone_number,
+            ]);
+        }
     }
 }

@@ -27,7 +27,7 @@
         </ul>
       </li>
 
-
+{{--
       <li class="nav-item ">
         <div class="iocn-link">
           <a href="{{ url('/aeternitas/employee') }}">
@@ -40,8 +40,25 @@
           <li><a class="link_name" href="{{ url('/aeternitas/employee') }}">Employee List</a></li>
 
         </ul>
-      </li>
+      </li> --}}
 
+      <li>
+        <div class="iocn-link">
+          <a href="{{ url('/aeternitas/employee') }}">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Employee List</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="{{ url('/aeternitas/employee') }}">Employee List</a></li>
+          <li><a href="{{ url('/aeternitas/employee') }}">Employee's</a></li>
+          <li><a href="{{ url('/aeternitas/department') }}">Department's</a></li>
+          <li><a href="{{ url('/aeternitas/position') }}">Position's</a></li>
+          <li><a href="#">Time Keeping</a></li>
+        </ul>
+      </li>
+{{--
      <li class="nav-item ">
         <div class="iocn-link">
           <a href="{{ url('/aeternitas/department') }}">
@@ -54,9 +71,9 @@
           <li><a class="link_name" href="{{ url('/aeternitas/department') }}">Department List</a></li>
 
         </ul>
-      </li>
+      </li> --}}
 
-      <li class="nav-item ">
+      {{-- <li class="nav-item ">
         <div class="iocn-link">
           <a href="{{ url('/aeternitas/position') }}">
             <i class='bx bx-history' ></i>
@@ -68,7 +85,7 @@
           <li><a class="link_name" href="{{ url('/aeternitas/position') }}">Position List</a></li>
 
         </ul>
-      </li>
+      </li> --}}
 
 
       <li class="nav-item">
@@ -81,22 +98,9 @@
         </ul>
       </li>
 
- {{--
-      <li>
-        <div class="iocn-link">
-          <a href="#">
-            <i class='bx bxs-car-mechanic' ></i>
-            <span class="link_name">Services</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
-        </div>
-        <ul class="sub-menu">
-          <li><a class="link_name" href="#">Services</a></li>
-          <li><a href="#">Add Services</a></li>
-          <li><a href="#">View Services</a></li>
-        </ul>
-      </li>
 
+
+ {{--
       <li class="nav-item">
         <a href="#"> <!-- Using the named route here -->
             <i class='bx bx-history'></i>

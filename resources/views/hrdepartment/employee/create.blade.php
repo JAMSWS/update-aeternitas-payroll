@@ -31,10 +31,6 @@
 
                 {{-- <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
-                    </li>
-
-                    <li class="nav-item" role="presentation">
                       <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-tab-pane" type="button" role="tab" aria-controls="details-tab-pane" aria-selected="false">Details</button>
                     </li>
 
@@ -44,24 +40,23 @@
 
 
 
-                  </ul> --}}
+                    </ul> --}}
                   <div class="tab-content" id="myTabContent">
                     <div class="p-3 border tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                         <div class="mb-3">
+                            <h2 class="text-success">Employee Details</h2>
                             <label>First Name</label>
                             <input type="text" name="first_name" class="form-control" required>
                             <label>Middle Name</label>
-                            <input type="text" name="suffix" class="form-control"required>
+                            <input type="text" name="suffix" class="form-control" placeholder="Optional">
                             <label>Last Name</label>
                             <input type="text" name="last_name" class="form-control"required>
-                            <div class="mb-3">
                             <label>Department</label>
                             <select name="department_name" class="form-control">
                                 @foreach ($department as $departments)
                                 <option value="{{ $departments->department }}">{{ $departments->department }}</option>
                                 @endforeach
                             </select>
-                            </div>
                             {{-- <input type="text" name="department_name" class="form-control"required> --}}
                             <label>Position</label>
                             <select name="position_name" class="form-control">
@@ -69,9 +64,21 @@
                                 <option value="{{ $positions->position }}">{{ $positions->position }}</option>
                                 @endforeach
                             </select>
+
+
                             {{-- <input type="text" name="position_name" class="form-control"required> --}}
-                            <label>Basic Pay</label>
-                            <input type="number" name="basic_pay" class="form-control"required>
+                            <label>Basic Pay <i class="text-danger "> (Monthly Pay)</i></label>
+                            <select name="basic_pay" class="form-control" required>
+                                <option value="16000.00">₱16,000.00</option>
+                                <option value="18000.00">₱18,000.00</option>
+                                <option value="20000.00">₱20,000.00</option>
+                                <option value="22000.00">₱22,000.00</option>
+                                <option value="25000.00">₱25,000.00</option>
+                                <option value="30000.00">₱30,000.00</option>
+                            </select>
+                            <label>Monthly Allowance</label>
+                            <input type="number" name="allowance" class="form-control" step="0.01" required>
+
                         </div>
                         {{-- <div class="mb-3">
                         <label>Description</label>

@@ -39,6 +39,9 @@ class hrdepartment extends Model
         'seperation_reason',
         'seperation_remarks',
         'basic_pay',
+        'allowance',
+        'sex',
+        'per_bi_month',
 
 
 
