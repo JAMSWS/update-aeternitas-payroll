@@ -69,6 +69,19 @@ Route::prefix('aeternitas')->group(function() {
 
     });
 
+    //This is for time keeping
+    Route::controller(App\Http\Controllers\timekeepingController::class)->group(function () {
+        Route::get('/timekeeping', 'index')->name('timekeeping.index');
+        Route::get('/timekeeping/create', 'create')->name('timekeeping.create');
+        Route::post('/timekeeping', 'store')->name('timekeeping.store');
+        Route::get('/timekeeping/{id}/edit', 'edit')->name('timekeeping.edit');
+        Route::put('/timekeeping/{id}', 'update')->name('timekeeping.update');
+        Route::delete('/timekeeping/{id}', 'destroy')->name('timekeeping.destroy');
+
+        });
+
+
+
 
 });
 

@@ -53,6 +53,7 @@
     <script src="{{ asset('admin/js/dataTables.bootstrap4.js') }}"></script>
     <!-- End custom js for this page-->
     <!-- DataTables & Plugins -->
+
     <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>

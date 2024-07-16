@@ -55,7 +55,7 @@
           <li><a href="{{ url('/aeternitas/employee') }}">Employee's</a></li>
           <li><a href="{{ url('/aeternitas/department') }}">Department's</a></li>
           <li><a href="{{ url('/aeternitas/position') }}">Position's</a></li>
-          <li><a href="#">Time Keeping</a></li>
+          <li><a href="{{ url('/aeternitas/timekeeping') }}">Time Keeping</a></li>
         </ul>
       </li>
 {{--

@@ -37,6 +37,9 @@ class StoreEmployeeRequest extends FormRequest
             'per_month' => 'nullable|numeric',
             'per_day' => 'nullable|numeric',
             'per_bi_month' => 'nullable|numeric',
+            'actual_days_worked' => 'nullable|numeric',
+            'absences' => 'nullable|numeric',
+            'vlsl' => 'nullable|numeric',
 
         ];
     }

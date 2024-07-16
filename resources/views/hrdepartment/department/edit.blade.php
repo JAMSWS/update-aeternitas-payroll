@@ -1,6 +1,6 @@
 @extends('layouts.hrdepartment')
 
-@section('title', 'Edit Employee | Aeternitas')
+@section('title', 'Edit Department | Aeternitas')
 
 @section('content')
 

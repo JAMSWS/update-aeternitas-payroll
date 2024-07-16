@@ -42,6 +42,9 @@ class hrdepartment extends Model
         'allowance',
         'sex',
         'per_bi_month',
+        'actual_days_worked',
+        'absences',
+        'vlsl',
 
 
 
