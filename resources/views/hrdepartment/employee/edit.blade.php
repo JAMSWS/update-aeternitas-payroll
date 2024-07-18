@@ -30,8 +30,22 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
                         </li>
+
+
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="timekeeping-tab" data-bs-toggle="tab" data-bs-target="#timekeeping-tab-pane" type="button" role="tab" aria-controls="timekeeping-tab-pane" aria-selected="false"> Regular Worked Days</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="timekeeping2-tab" data-bs-toggle="tab" data-bs-target="#timekeeping2-tab-pane" type="button" role="tab" aria-controls="timekeeping2-tab-pane" aria-selected="false"> Time Keeping</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="Legal-tab" data-bs-toggle="tab" data-bs-target="#Legal-tab-pane" type="button" role="tab" aria-controls="Legal-tab-pane" aria-selected="false"> Legal Worked Days</button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="Special-tab" data-bs-toggle="tab" data-bs-target="#special-tab-pane" type="button" role="tab" aria-controls="special-tab-pane" aria-selected="false"> Special Worked Days</button>
                         </li>
 
                         <li class="nav-item" role="presentation">
@@ -111,7 +125,7 @@
                                             </select>
                                         </div>
                                         <div class="mb-3">
-                                            <label>Basic Pay (₱)</label>
+                                            <label>Monthly Pay (₱)</label>
                                             <select name="basic_pay" id="basic_pay" class="form-control" required>
                                                 <option value="16000.00" {{ $employee->basic_pay == '16000.00' ? 'selected' : '' }}>₱16,000.00</option>
                                                 <option value="18000.00" {{ $employee->basic_pay == '18000.00' ? 'selected' : '' }}>₱18,000.00</option>
@@ -140,26 +154,36 @@
                                             <input type="number" id="daily_rate" name="per_day" class="form-control" readonly>
                                         </div>
 
+                                        <div class="mb-3">
+                                            <label>Total Worked Days</label>
+                                            <input type="number" id="total_worked_days" name="total_worked_days" class="form-control" readonly>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>Basic Pay (₱) <i class="text text-danger"> Make Sure to update double times to calculate the amount!</i></label>
+                                            <input type="number" id="total_basic_pay" name="total_basic_pay" value="{{ $employee->total_basic_pay }}" class="form-control" readonly>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
 
+                            {{-- Regular worked days --}}
                             <div class="p-3 border tab-pane fade" id="timekeeping-tab-pane" role="tabpanel" aria-labelledby="timekeeping-tab">
                                 <!-- regular worked days Tab Content -->
+                                <h2 class="text-success">Regular Worked Days</h2>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <!-- Timekeeping form fields -->
+
                                         <div class="mb-3">
                                             <label>Daily Rate (₱)</label>
                                             <input type="number" id="daily_rate"  value="{{ $employee->per_day  }}" class="form-control" readonly>
                                         </div>
-                                        <div class="mb-3">
-                                            {{-- <h2 class="text-success">Time Keeping</h2> --}}
-                                            <!-- Add your timekeeping fields here -->
-                                            <label for="month_rate_paid_days">Month Rate Paid Days</label>
-                                            <input type="number" id="month_rate_paid_days" name="actual_days_worked" value="13"  class="form-control" readonly>
-                                            <!-- Add more fields as necessary -->
 
+
+                                        <div class="mb-3">
+                                            <label>Regular Worked Days (No. OF DAYS)</label>
+                                            <input type="number" id="regular_worked_days" name="regular_worked_days" value="{{ $employee->regular_worked_days }}" class="form-control" Readonly>
                                         </div>
 
                                         <div class="mb-3">
@@ -168,27 +192,103 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label>VL/SL (Input per day, 0.50 = Half Day)</label>
-                                            <input type="number" id="vlsl" step="0.01" name="vlsl"  value="{{ $employee->vlsl  }}" placeholder="Leave it blank if None" class="form-control">
-                                        </div>
 
-                                        <div class="mb-3">
-                                            <label>Regular Worked Days </label>
-                                            <input type="number" id="regular_worked_days"  value="#" class="form-control" Readonly>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label>Amount (₱)</label>
+                                            <label>Amount (₱)</label>  <i class="text text-danger">*Make Sure to update double times to calculate the amount!*</i>
                                             <input type="number" id="rwd_amount" name="rwd_amount" value="#" class="form-control" Readonly>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+                            {{-- Legal worked days Tab --}}
+                            <div class="p-3 border tab-pane fade" id="Legal-tab-pane" role="tabpanel" aria-labelledby="Legal-tab">
+                                <!-- Legal worked days Tab Content -->
+                                <h2 class="text-success">Legal Worked Days</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+
+                                            <label>Daily Rate (₱)</label>
+                                            <input type="number" id="daily_rate"  value="{{ $employee->per_day  }}" class="form-control" readonly>
+
+                                            <label>Legal Holiday Worked Days (No. OF DAYS)</label>
+                                            <input type="number" id="legal_worked_days" name="legal_worked_days" step="0.01" placeholder="Leave it blank if None"  value="{{ $employee->legal_worked_days  }}" class="form-control">
+
+                                            <label>Total Amount (₱)</label>
+                                            <input type="number" id="lhd_amount" name="lhd_amount" step="0.01"   value="{{ $employee->lhd_amount  }}" class="form-control" readonly>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Special worked days Tab --}}
+                            <div class="p-3 border tab-pane fade" id="special-tab-pane" role="tabpanel" aria-labelledby="special-tab">
+                                <!-- Special worked days Tab Content -->
+                                <h2 class="text-success">Special Worked Days</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label>Rate (₱)</label>
+                                            <input type="number" id="special_rate" name="special_rate" value="{{ $employee->special_rate  }}" class="form-control" readonly>
+
+                                            <label>Special Holiday Worked Days (No. OF DAYS)</label>
+                                            <input type="number" id="special_worked_days" name="special_worked_days" step="0.01" placeholder="Leave it blank if None" value="{{ $employee->special_worked_days  }}" class="form-control">
+
+                                            <label>Total Amount (₱)</label>
+                                            <input type="number" id="special_amount" name="special_amount" step="0.01" value="{{ $employee->special_amount  }}" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Time keeping Tab --}}
+                            <div class="p-3 border tab-pane fade" id="timekeeping2-tab-pane" role="tabpanel" aria-labelledby="timekeeping2-tab">
+                                <!-- regular worked days Tab Content -->
+                                <h2 class="text-success">Time Keeping</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!-- Timekeeping form fields -->
+
+
+                                        <div class="mb-3">
+
+                                            <!-- Add your timekeeping fields here -->
+                                            <label for="month_rate_paid_days">Month Rate Paid Days</label>
+                                            <input type="number" id="month_rate_paid_days" name="actual_days_worked" value="13"  class="form-control" readonly>
+                                        </div>
+
+                                        {{-- <div class="mb-3">
+                                            <label>Legal Holiday Worked (Input per day)</label>
+                                            <input type="number" id="#" step="0.01" name="#"  value="#" placeholder="Leave it blank if None" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>Special Holiday Worked (Input per day)</label>
+                                            <input type="number" id="#" step="0.01" name="#"  value="#" placeholder="Leave it blank if None" class="form-control">
+                                        </div> --}}
+
+                                        <div class="mb-3">
+                                            <label>Vacation Leave/Sick Leave (Input per day, 0.50 = Half Day)</label>
+                                            <input type="number" id="vlsl" step="0.01" name="vlsl"  value="{{ $employee->vlsl  }}" placeholder="Leave it blank if None" class="form-control">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Leave tab --}}
                             <div class="p-3 border tab-pane fade" id="leave-tab-pane" role="tabpanel" aria-labelledby="leave-tab">
+                                <h2 class="text-success">Leave</h2>
                                 <div class="mb-3">
                                     <label>Daily Rate (₱) </label>
                                     <input type="number" id="daily_rate"  value="{{ $employee->per_day }}" class="form-control" Readonly>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label>Credit Points</label>
+                                    <input type="number" id="#"  value="#" class="form-control" readonly>
                                 </div>
 
                                 <div class="mb-3">
@@ -198,7 +298,7 @@
 
                                 <div class="mb-3">
                                     <label>Leave Amount (₱)</label>
-                                    <input type="number" id="leave_amount" name="leave_amount"  value="#" class="form-control" Readonly>
+                                    <input type="number" id="leave_amount" name="leave_amount"  value="{{ $employee->leave_amount }}" class="form-control" Readonly>
                                 </div>
                             </div>
                         </div>
@@ -212,9 +312,9 @@
         </div>
     </div>
 </div>
+
+
 @push('scripts')
-
-
 <script>
     // Calculate and display total monthly and bi-monthly totals
     function calculateTotals() {
@@ -263,62 +363,193 @@
 
     //Calculate and display rwd amount
 
+    // function calculateFinalAmount() {
+    //     var biMonthlyRate = parseFloat(document.getElementById('bi_monthly_total_salary').value);
+    //     var leaveAmount = parseFloat(document.getElementById('leave_amount').value);
+    //     var monthRatePaidDays = parseFloat(document.getElementById('month_rate_paid_days').value);
+    //     var regularWorkedDays = parseFloat(document.getElementById('regular_worked_days').value);
+    //     var vlsl = parseFloat(document.getElementById('vlsl').value) || 0;
+    //     var dailyRate = parseFloat(document.getElementById('daily_rate').value);
+
+    //     if (!isNaN(biMonthlyRate) && !isNaN(leaveAmount) && !isNaN(monthRatePaidDays) && !isNaN(regularWorkedDays) && !isNaN(vlsl) && !isNaN(dailyRate)) {
+    //         var finalAmount = (biMonthlyRate - leaveAmount) - ((monthRatePaidDays - regularWorkedDays - vlsl) * dailyRate);
+    //         document.getElementById('rwd_amount').value = finalAmount.toFixed(2);
+    //     }
+    // }
+
+    //debug
     function calculateFinalAmount() {
         var biMonthlyRate = parseFloat(document.getElementById('bi_monthly_total_salary').value);
         var leaveAmount = parseFloat(document.getElementById('leave_amount').value);
         var monthRatePaidDays = parseFloat(document.getElementById('month_rate_paid_days').value);
         var regularWorkedDays = parseFloat(document.getElementById('regular_worked_days').value);
-        var vlsl = parseFloat(document.getElementById('vlsl').value) || 0;
+        var usedCurrentCutOff = parseFloat(document.getElementById('used_current_cut_off').value);
+
         var dailyRate = parseFloat(document.getElementById('daily_rate').value);
 
-        if (!isNaN(biMonthlyRate) && !isNaN(leaveAmount) && !isNaN(monthRatePaidDays) && !isNaN(regularWorkedDays) && !isNaN(vlsl) && !isNaN(dailyRate)) {
-            var finalAmount = (biMonthlyRate - leaveAmount) - ((monthRatePaidDays - regularWorkedDays - vlsl) * dailyRate);
+        if (!isNaN(biMonthlyRate) && !isNaN(leaveAmount) && !isNaN(monthRatePaidDays) && !isNaN(regularWorkedDays) && !isNaN(usedCurrentCutOff)  && !isNaN(dailyRate)) {
+            var finalAmount = (biMonthlyRate - leaveAmount) - ((monthRatePaidDays - regularWorkedDays - usedCurrentCutOff) * dailyRate);
             document.getElementById('rwd_amount').value = finalAmount.toFixed(2);
         }
     }
 
+
+    //Legal Holiday script
+
+    function calculateLhdAmount() {
+        var legalWorkedDays = parseFloat(document.getElementById('legal_worked_days').value);
+        var dailyRate = parseFloat(document.getElementById('daily_rate').value);
+
+        if (!isNaN(legalWorkedDays) && !isNaN(dailyRate)) {
+            var lhdAmount = legalWorkedDays * dailyRate * 1;
+            document.getElementById('lhd_amount').value = lhdAmount.toFixed(2);
+        }
+    }
+
+    // Calculate and display Special Holiday amount
+    function calculateSpecialAmount() {
+        var specialWorkedDays = parseFloat(document.getElementById('special_worked_days').value);
+        var dailyRate = parseFloat(document.getElementById('daily_rate').value);
+
+        if (!isNaN(specialWorkedDays) && !isNaN(dailyRate)) {
+            var specialRate = dailyRate * 0.3;
+            var specialAmount = specialRate * specialWorkedDays;
+            document.getElementById('special_rate').value = specialRate.toFixed(2);
+            document.getElementById('special_amount').value = specialAmount.toFixed(2);
+        }
+    }
+    // Total worked days
+    function calculateTotalWorkedDays() {
+        var regularWorkedDays = parseFloat(document.getElementById('regular_worked_days').value);
+        var legalWorkedDays = parseFloat(document.getElementById('legal_worked_days').value);
+        var specialWorkedDays = parseFloat(document.getElementById('special_worked_days').value);
+        var totalWorkedDays = 0;
+        if (!isNaN(regularWorkedDays)) {
+            totalWorkedDays += regularWorkedDays;
+        }
+        if (!isNaN(legalWorkedDays)) {
+            totalWorkedDays += legalWorkedDays;
+        }
+        if (!isNaN(specialWorkedDays)) {
+            totalWorkedDays += specialWorkedDays;
+        }
+        document.getElementById('total_worked_days').value = totalWorkedDays.toFixed(2);
+    }
+
+    // total basic pay amount
+
+      // Calculate total basic pay
+      function calculateTotalBasicPay() {
+            var totalRegularDays = parseFloat(document.getElementById('rwd_amount').value);
+            var totalLegalDays = parseFloat(document.getElementById('lhd_amount').value);
+            var totalSpecialDays = parseFloat(document.getElementById('special_amount').value);
+
+            var totalBasicPay = totalRegularDays + totalLegalDays + totalSpecialDays;
+
+            document.getElementById('total_basic_pay').value = totalBasicPay.toFixed(2);
+        }
+
+
+
+
+
+
+
     // Initial calculation on page load
-    calculateTotals();
-    calculateDailyRate();
-    calculateRegularWorkedDays();
-    calculateLeaveAmount();
-    calculateFinalAmount();
+    window.onload = function() {
+        calculateTotals();
+        calculateDailyRate();
+        calculateRegularWorkedDays();
+        calculateLeaveAmount();
+        calculateFinalAmount();
+        calculateLhdAmount();
+        calculateSpecialAmount();
+        calculateTotalWorkedDays();
+        calculateTotalBasicPay();
+    };
+
 
     // // Event listeners to recalculate on change
     // document.getElementById('basic_pay').addEventListener('change', function() {
     //     calculateTotals();
     //     calculateDailyRate();
+    //     calculateFinalAmount();
     // });
-    // document.getElementById('allowance').addEventListener('input', calculateTotals);
-    // document.getElementById('absences').addEventListener('input', calculateRegularWorkedDays);
-    // document.getElementById('vlsl').addEventListener('input', calculateLeaveAmount);
+    // document.getElementById('allowance').addEventListener('input', function() {
+    //     calculateTotals();
+    //     calculateFinalAmount();
+    // });
+    // document.getElementById('absences').addEventListener('input', function() {
+    //     calculateRegularWorkedDays();
+    //     calculateFinalAmount();
+    // });
+    // document.getElementById('vlsl').addEventListener('input', function() {
+    //     calculateLeaveAmount();
+    //     calculateFinalAmount();
+    // });
 
+    // document.getElementById('legal_worked_days').addEventListener('input', calculateLhdAmount);
+    // document.getElementById('special_worked_days').addEventListener('input', calculateSpecialAmount);
 
-
-    // Event listeners to recalculate on change
-    document.getElementById('basic_pay').addEventListener('change', function() {
+    document.getElementById('basic_pay').addEventListener('input', function() {
         calculateTotals();
         calculateDailyRate();
+        calculateRegularWorkedDays();
+        calculateLeaveAmount();
         calculateFinalAmount();
+        calculateLhdAmount();
+        calculateSpecialAmount();
+        calculateTotalWorkedDays();
     });
+
     document.getElementById('allowance').addEventListener('input', function() {
         calculateTotals();
+        calculateDailyRate();
+        calculateRegularWorkedDays();
+        calculateLeaveAmount();
         calculateFinalAmount();
+        calculateLhdAmount();
+        calculateSpecialAmount();
+        calculateTotalWorkedDays();
     });
+
     document.getElementById('absences').addEventListener('input', function() {
         calculateRegularWorkedDays();
         calculateFinalAmount();
+        calculateTotalWorkedDays();
     });
+
     document.getElementById('vlsl').addEventListener('input', function() {
         calculateLeaveAmount();
         calculateFinalAmount();
     });
+
+    document.getElementById('legal_worked_days').addEventListener('input', function() {
+        calculateLhdAmount();
+        calculateTotalWorkedDays();
+    });
+
+    document.getElementById('special_worked_days').addEventListener('input', function() {
+        calculateSpecialAmount();
+        calculateTotalWorkedDays();
+        calculateTotalBasicPay();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 
-
-
-
-
+@endpush
 
 
 @endsection

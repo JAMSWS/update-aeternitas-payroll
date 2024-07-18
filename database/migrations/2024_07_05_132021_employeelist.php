@@ -34,6 +34,15 @@ return new class extends Migration
             $table->integer('actual_days_worked')->nullable();
             $table->decimal('absences',10, 2)->nullable();
             $table->decimal('vlsl',10, 2)->nullable();
+            $table->decimal('regular_worked_days',10, 2)->nullable();
+            $table->decimal('rwd_amount',10, 2)->nullable();
+            $table->decimal('legal_worked_days',10, 2)->nullable();
+            $table->decimal('lhd_amount',10, 2)->nullable();
+            $table->decimal('leave_amount',10, 2)->nullable();
+            $table->decimal('special_rate',10, 2)->nullable();
+            $table->decimal('special_worked_days',10, 2)->nullable();
+            $table->decimal('special_amount',10, 2)->nullable();
+            $table->decimal('total_basic_pay',10, 2)->nullable();
             $table->integer('sss_number')->nullable();
             $table->integer('philhealth_number')->nullable();
             $table->integer('pagibig_number')->nullable();

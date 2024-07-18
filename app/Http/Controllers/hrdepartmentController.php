@@ -53,6 +53,15 @@ class hrdepartmentController extends Controller
             'actual_days_worked' => 'nullable|numeric',
             'absences' => 'nullable|numeric',
             'vlsl' => 'nullable|numeric',
+            'regular_worked_days' => 'nullable|numeric',
+            'rwd_amount' => 'nullable|numeric',
+            'leave_amount' => 'nullable|numeric',
+            'legal_worked_days' => 'nullable|numeric',
+            'lhd_amount' => 'nullable|numeric',
+            'special_rate' => 'nullable|numeric',
+            'special_worked_days' => 'nullable|numeric',
+            'special_amount' => 'nullable|numeric',
+            'total_basic_pay' => 'nullable|numeric',
 
         ]);
 
@@ -116,6 +125,15 @@ class hrdepartmentController extends Controller
             'actual_days_worked' => 'nullable|numeric',
             'absences' => 'nullable|numeric',
             'vlsl' => 'nullable|numeric',
+            'regular_worked_days' => 'nullable|numeric',
+            'rwd_amount' => 'nullable|numeric',
+            'leave_amount' => 'nullable|numeric',
+            'legal_worked_days' => 'nullable|numeric',
+            'lhd_amount' => 'nullable|numeric',
+            'special_rate' => 'nullable|numeric',
+            'special_worked_days' => 'nullable|numeric',
+            'special_amount' => 'nullable|numeric',
+            'total_basic_pay' => 'nullable|numeric',
 
         ]);
 

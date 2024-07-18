@@ -45,6 +45,15 @@ class hrdepartment extends Model
         'actual_days_worked',
         'absences',
         'vlsl',
+        'regular_worked_days',
+        'rwd_amount',
+        'leave_amount',
+        'legal_worked_days',
+        'lhd_amount',
+        'special_rate',
+        'special_worked_days',
+        'special_amount',
+        'total_basic_pay',
 
 
 

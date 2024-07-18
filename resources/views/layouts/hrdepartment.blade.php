@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-
+    @stack('scripts')
     <!-- Plugin js for this page-->
     <script src="{{ asset('admin/vendors/base/vendor.bundle.base.js') }}"></script>
     <script src="{{ asset('admin/vendors/datatables.net/jquery.dataTables.js') }}"></script>
