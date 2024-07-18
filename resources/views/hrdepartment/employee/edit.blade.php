@@ -549,6 +549,36 @@
 
 </script>
 
+<script>
+    function setDefaultValues() {
+        var inputs = document.querySelectorAll('input[type="number"]');
+        inputs.forEach(function(input) {
+            if (input.value === '') {
+                input.value = 0;
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        setDefaultValues();
+
+        calculateTotals();
+        calculateDailyRate();
+        calculateRegularWorkedDays();
+        calculateLeaveAmount();
+        calculateFinalAmount();
+        calculateLhdAmount();
+        calculateSpecialAmount();
+        calculateTotalWorkedDays();
+        calculateTotalBasicPay();
+
+        var inputs = document.querySelectorAll('input[type="number"]');
+        inputs.forEach(function(input) {
+            input.addEventListener('input', setDefaultValues);
+        });
+    });
+</script>
+
 @endpush
 
 
