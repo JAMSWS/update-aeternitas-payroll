@@ -62,6 +62,20 @@ class hrdepartmentController extends Controller
             'special_worked_days' => 'nullable|numeric',
             'special_amount' => 'nullable|numeric',
             'total_basic_pay' => 'nullable|numeric',
+            'overtime_rate25' => 'nullable|numeric',
+            'ot_hours25' => 'nullable|numeric',
+            'ot_amount25' => 'nullable|numeric',
+            'overtime_rate30' => 'nullable|numeric',
+            'ot_hours30' => 'nullable|numeric',
+            'ot_amount30' => 'nullable|numeric',
+            'overtime_rate100' => 'nullable|numeric',
+            'ot_hours100' => 'nullable|numeric',
+            'ot_amount100' => 'nullable|numeric',
+            'total_ot' => 'nullable|numeric',
+            'total_basic_pay_plus_ot' => 'nullable|numeric',
+            'nd_rate' => 'nullable|numeric',
+            'nd_hours' => 'nullable|numeric',
+            'nd_amount' => 'nullable|numeric',
 
         ]);
 
@@ -134,6 +148,20 @@ class hrdepartmentController extends Controller
             'special_worked_days' => 'nullable|numeric',
             'special_amount' => 'nullable|numeric',
             'total_basic_pay' => 'nullable|numeric',
+            'overtime_rate25' => 'nullable|numeric',
+            'ot_hours25' => 'nullable|numeric',
+            'ot_amount25' => 'nullable|numeric',
+            'overtime_rate30' => 'nullable|numeric',
+            'ot_hours30' => 'nullable|numeric',
+            'ot_amount30' => 'nullable|numeric',
+            'overtime_rate100' => 'nullable|numeric',
+            'ot_hours100' => 'nullable|numeric',
+            'ot_amount100' => 'nullable|numeric',
+            'total_ot' => 'nullable|numeric',
+            'total_basic_pay_plus_ot' => 'nullable|numeric',
+            'nd_rate' => 'nullable|numeric',
+            'nd_hours' => 'nullable|numeric',
+            'nd_amount' => 'nullable|numeric',
 
         ]);
 

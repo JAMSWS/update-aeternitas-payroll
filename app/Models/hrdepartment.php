@@ -54,6 +54,21 @@ class hrdepartment extends Model
         'special_worked_days',
         'special_amount',
         'total_basic_pay',
+        'overtime_rate25',
+        'ot_hours25',
+        'ot_amount25',
+        'overtime_rate30',
+        'ot_hours30',
+        'ot_amount30',
+        'overtime_rate100',
+        'ot_hours100',
+        'ot_amount100',
+        'total_ot',
+        'total_basic_pay_plus_ot',
+        'nd_rate',
+        'nd_hours',
+        'nd_amount',
+
 
 
 

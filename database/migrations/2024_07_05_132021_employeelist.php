@@ -43,6 +43,22 @@ return new class extends Migration
             $table->decimal('special_worked_days',10, 2)->nullable();
             $table->decimal('special_amount',10, 2)->nullable();
             $table->decimal('total_basic_pay',10, 2)->nullable();
+            $table->decimal('overtime_rate25',10, 2)->nullable();
+            $table->decimal('ot_hours25',10, 2)->nullable();
+            $table->decimal('ot_amount25',10, 2)->nullable();
+            $table->decimal('overtime_rate30',10, 2)->nullable();
+            $table->decimal('ot_hours30',10, 2)->nullable();
+            $table->decimal('ot_amount30',10, 2)->nullable();
+            $table->decimal('overtime_rate100',10, 2)->nullable();
+            $table->decimal('ot_hours100',10, 2)->nullable();
+            $table->decimal('ot_amount100',10, 2)->nullable();
+            $table->decimal('total_ot',10, 2)->nullable();
+            $table->decimal('total_basic_pay_plus_ot',10, 2)->nullable();
+            $table->decimal('nd_rate',10, 2)->nullable();
+            $table->decimal('nd_hours',10, 2)->nullable();
+            $table->decimal('nd_amount',10, 2)->nullable();
+
+
             $table->integer('sss_number')->nullable();
             $table->integer('philhealth_number')->nullable();
             $table->integer('pagibig_number')->nullable();
