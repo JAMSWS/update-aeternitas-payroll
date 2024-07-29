@@ -76,6 +76,15 @@ class hrdepartmentController extends Controller
             'nd_rate' => 'nullable|numeric',
             'nd_hours' => 'nullable|numeric',
             'nd_amount' => 'nullable|numeric',
+            'late_rate' => 'nullable|numeric',
+            'number_of_minutes_late' => 'nullable|numeric',
+            'late_amount' => 'nullable|numeric',
+            'missing_charges' => 'nullable|numeric',
+            'total_charges' => 'nullable|numeric',
+            'half_allowance' => 'nullable|numeric',
+            'meal_allowance' => 'nullable|numeric',
+            'grosspay' => 'nullable|numeric',
+
 
         ]);
 
@@ -162,6 +171,14 @@ class hrdepartmentController extends Controller
             'nd_rate' => 'nullable|numeric',
             'nd_hours' => 'nullable|numeric',
             'nd_amount' => 'nullable|numeric',
+            'late_rate' => 'nullable|numeric',
+            'number_of_minutes_late' => 'nullable|numeric',
+            'late_amount' => 'nullable|numeric',
+            'missing_charges' => 'nullable|numeric',
+            'total_charges' => 'nullable|numeric',
+            'half_allowance' => 'nullable|numeric',
+            'meal_allowance' => 'nullable|numeric',
+            'grosspay' => 'nullable|numeric',
 
         ]);
 

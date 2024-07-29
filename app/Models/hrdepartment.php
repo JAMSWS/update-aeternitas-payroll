@@ -68,6 +68,14 @@ class hrdepartment extends Model
         'nd_rate',
         'nd_hours',
         'nd_amount',
+        'late_rate',
+        'number_of_minutes_late',
+        'late_amount',
+        'missing_charges',
+        'total_charges',
+        'half_allowance',
+        'meal_allowance',
+        'grosspay',
 
 
 

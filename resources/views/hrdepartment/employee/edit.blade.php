@@ -64,6 +64,11 @@
                             <button class="nav-link" id="late-tab" data-bs-toggle="tab" data-bs-target="#late-tab-pane" type="button" role="tab" aria-controls="late-tab-pane" aria-selected="false"> Late Deduction</button>
                         </li>
 
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="allowance-tab" data-bs-toggle="tab" data-bs-target="#allowance-tab-pane" type="button" role="tab" aria-controls="late-tab-pane" aria-selected="false"> Allowance </button>
+                        </li>
+
+
 
 
 
@@ -180,8 +185,13 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label>Basic Pay + OT (₱) <i class="text text-danger"> Make Sure to update double times to calculate the amount!</i></label>
+                                            <label>Basic Pay + OT (₱) </label>
                                             <input type="number" id="total_basic_pay_plus_ot" name="total_basic_pay_plus_ot" value="#" class="form-control" readonly>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>Gross Pay (₱) <i class="text text-danger"> Make Sure to update double times to calculate the amount!</i></label>
+                                            <input type="number" id="grosspay" name="grosspay" value="{{ $employee->grosspay }}" class="form-control" readonly>
                                         </div>
 
                                     </div>
@@ -405,24 +415,38 @@
                                 <h2 class="text-success">Late Deduction</h2> <hr>
                                     <div class="mb-3">
                                         <label> Rate/Min (₱)</label>
-                                        <input type="number" id="late_rate" name="late_rate" value="#" class="form-control" Readonly>
+                                        <input type="number" id="late_rate" name="late_rate" value="{{ $employee->late_rate }}" class="form-control" Readonly>
 
                                         <label> Number Of Minutes </label>
-                                        <input type="number" id="number_of_minutes_late" name="number_of_minutes_late" value="#" class="form-control" >
+                                        <input type="number" id="number_of_minutes_late" name="number_of_minutes_late" value="{{ $employee->number_of_minutes_late }}" class="form-control" >
 
                                         <label>Late Amount (₱)</label>
-                                        <input type="number" id="late_amount" name="late_amount"   value="#" class="form-control" readonly>
+                                        <input type="number" id="late_amount" name="late_amount"   value="{{ $employee->late_amount }}" class="form-control" readonly>
                                     </div>
 
                                     <hr>
 
                                     <div class="mb-3">
 
-                                        <label>Charges  ₱<i class="text text-danger"> Missing/Loss Item</i></label>
-                                        <input type="number" id="missing_charges" name="missing_charges" value="#" class="form-control" >
+                                        <label>Charges  ₱<i class="text text-danger"> Missing/Loss Item <b> Note: Please Input 0 if none or Existing data to recalculate the Total Charge!</b></i></label>
+                                        <input type="number" id="missing_charges" name="missing_charges" value="{{ $employee->missing_charges }}" class="form-control" >
 
-                                        <label>Total Charges (₱)</label>
-                                        <input type="number" id="total_charges" name="total_charges"   value="#" class="form-control" readonly>
+                                        <label>Total Charges (₱) <i class="text text-danger"></i> </label>
+                                        <input type="number" id="total_charges" name="total_charges" value="{{ $employee->total_charges }}"  class="form-control" readonly>
+                                    </div>
+
+                            </div>
+
+                            {{-- Allowance tab --}}
+                            <div class="p-3 border tab-pane fade" id="allowance-tab-pane" role="tabpanel" aria-labelledby="allowance-tab">
+                                <h2 class="text-success">Allowance</h2> <hr>
+                                    <div class="mb-3">
+                                        <label> Allowance (₱)</label>
+                                        <input type="number" id="half_allowance" name="half_allowance" value="{{ $employee->half_allowance }}" class="form-control" Readonly>
+
+                                        <label> Meal (₱)</label>
+                                        <input type="number" id="meal_allowance" name="meal_allowance" value="{{ $employee->meal_allowance }}" class="form-control" >
+
                                     </div>
 
                             </div>
@@ -1011,6 +1035,31 @@
         document.getElementById('total_charges').value = totalCharges.toFixed(2);
     }
 
+    function calculateHalfAllowance() {
+        var allowance = parseFloat(document.getElementById('allowance').value);
+        var halfallowance = allowance / 2;
+        document.getElementById('half_allowance').value = halfallowance.toFixed(2);
+
+    }
+
+    function calculateGrosspay() {
+        var meal = parseFloat(document.getElementById('meal_allowance').value);
+        var halfallowance = parseFloat(document.getElementById('half_allowance').value);
+        var leaveAmount = parseFloat(document.getElementById('leave_amount').value);
+        var ndAmount = parseFloat(document.getElementById('nd_amount').value);
+        var totalBasicPayPlusOT = parseFloat(document.getElementById('total_basic_pay_plus_ot').value);
+        var lateAmount = parseFloat(document.getElementById('late_amount').value);
+        var missingCharges = parseFloat(document.getElementById('missing_charges').value);
+        var totalGrosspay = meal + halfallowance + leaveAmount + ndAmount + totalBasicPayPlusOT - (lateAmount + missingCharges);
+
+        document.getElementById('grosspay').value = totalGrosspay.toFixed(2);
+    }
+
+
+
+
+
+
 
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -1025,6 +1074,7 @@
             calculateNightDifferentialRate();
             calculateNDAmount();
             calculateTotalBasicPayPlusOT();
+            calculateGrosspay();
         });
 
         // Calculate OT amounts when OT hours change
@@ -1043,34 +1093,41 @@
         // Calculate ND amount when ND hours change
         document.getElementById('nd_hours').addEventListener('input', function() {
             calculateNDAmount();
+            calculateGrosspay();
         });
 
         // Calculate total basic pay plus OT when basic pay or total OT changes
         document.getElementById('total_basic_pay').addEventListener('input', function() {
             calculateTotalBasicPayPlusOT();
+            calculateGrosspay();
         });
 
         document.getElementById('total_ot').addEventListener('input', function() {
             calculateTotalBasicPayPlusOT();
+            calculateGrosspay();
         });
 
         // Calculate late rate when daily rate changes
         document.getElementById('daily_rate').addEventListener('input', function() {
             calculateLateRate();
             calculateLateAmount(); // Recalculate late amount when daily rate changes
+            calculateGrosspay();
         });
 
          // Calculate late amount when number of minutes late changes
          document.getElementById('number_of_minutes_late').addEventListener('input', function() {
             calculateLateAmount();
+            calculateGrosspay();
         });
 
         document.getElementById('late_amount').addEventListener('input', function() {
             calculateTotalCharges();
+            calculateGrosspay();
         });
 
         document.getElementById('missing_charges').addEventListener('input', function() {
             calculateTotalCharges();
+            calculateGrosspay();
         });
 
 
@@ -1089,6 +1146,8 @@
         calculateLateRate();
         calculateLateAmount();
         calculateTotalCharges();
+        calculateHalfAllowance();
+        calculateGrosspay();
     });
 
     // Initial calculation on page load
@@ -1115,6 +1174,8 @@
         calculateLateRate();
         calculateLateAmount();
         calculateTotalCharges();
+        calculateHalfAllowance();
+        calculateGrosspay();
     };
 
 
@@ -1128,6 +1189,7 @@
         calculateLhdAmount();
         calculateSpecialAmount();
         calculateTotalWorkedDays();
+        calculateGrosspay();
     });
 
     document.getElementById('allowance').addEventListener('input', function() {
@@ -1139,6 +1201,8 @@
         calculateLhdAmount();
         calculateSpecialAmount();
         calculateTotalWorkedDays();
+        calculateHalfAllowance();
+        calculateGrosspay();
     });
 
     document.getElementById('absences').addEventListener('input', function() {
@@ -1199,11 +1263,13 @@
         calculateOTAmount30();
         calculateOTAmount100();
 
+
         calculateUndertimeDeduction();
         calculateTardinessDeduction();
         calculateTotalDeductions();
         calculateTotalNetBasicPay();
         calculateCharges();
+        calculateGrosspay();
 
         var inputs = document.querySelectorAll('input[type="number"]');
         inputs.forEach(function(input) {

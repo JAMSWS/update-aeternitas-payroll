@@ -58,6 +58,17 @@ return new class extends Migration
             $table->decimal('nd_hours',10, 2)->nullable();
             $table->decimal('nd_amount',10, 2)->nullable();
 
+            $table->decimal('late_rate',10, 2)->nullable();
+            $table->decimal('number_of_minutes_late',10, 2)->nullable();
+            $table->decimal('late_amount',10, 2)->nullable();
+            $table->decimal('missing_charges',10, 2)->nullable();
+            $table->decimal('total_charges',10, 2)->nullable();
+
+            $table->decimal('half_allowance',10, 2)->nullable();
+            $table->decimal('meal_allowance',10, 2)->nullable();
+
+            $table->decimal('grosspay',10, 2)->nullable();
+
 
             $table->integer('sss_number')->nullable();
             $table->integer('philhealth_number')->nullable();
