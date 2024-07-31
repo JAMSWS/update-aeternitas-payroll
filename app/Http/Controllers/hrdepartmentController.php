@@ -85,6 +85,36 @@ class hrdepartmentController extends Controller
             'meal_allowance' => 'nullable|numeric',
             'grosspay' => 'nullable|numeric',
 
+            'sss_premcontribution' => 'nullable|numeric',
+            'sss_wisp' => 'nullable|numeric',
+            'phic' => 'nullable|numeric',
+            'hdmf' => 'nullable|numeric',
+            'tax' => 'nullable|numeric',
+            'sss_loan' => 'nullable|numeric',
+            'hdmf_loan' => 'nullable|numeric',
+            'uniform' => 'nullable|numeric',
+
+            'employer_sss_premcontribution' => 'nullable|numeric',
+            'employer_sss_wisp' => 'nullable|numeric',
+            'employer_phic' => 'nullable|numeric',
+            'employer_hdmf' => 'nullable|numeric',
+
+            'tax_sss_premcontribution' => 'nullable|numeric',
+            'tax_sss_wisp' => 'nullable|numeric',
+            'tax_phic' => 'nullable|numeric',
+            'tax_hdmf' => 'nullable|numeric',
+            'totalremittance' => 'nullable|numeric',
+            'taxable_income' => 'nullable|numeric',
+            'tax_cl' => 'nullable|numeric',
+            'tax_excess' => 'nullable|numeric',
+
+            'tax_rate_percentage' => 'nullable|numeric',
+            'tax_rate' => 'nullable|numeric',
+            'fixed_rate' => 'nullable|numeric',
+            'tax_month' => 'nullable|numeric',
+            'tax_cutoff' => 'nullable|numeric',
+
+
 
         ]);
 
@@ -179,6 +209,35 @@ class hrdepartmentController extends Controller
             'half_allowance' => 'nullable|numeric',
             'meal_allowance' => 'nullable|numeric',
             'grosspay' => 'nullable|numeric',
+
+            'sss_premcontribution' => 'nullable|numeric',
+            'sss_wisp' => 'nullable|numeric',
+            'phic' => 'nullable|numeric',
+            'hdmf' => 'nullable|numeric',
+            'tax' => 'nullable|numeric',
+            'sss_loan' => 'nullable|numeric',
+            'hdmf_loan' => 'nullable|numeric',
+            'uniform' => 'nullable|numeric',
+
+            'employer_sss_premcontribution' => 'nullable|numeric',
+            'employer_sss_wisp' => 'nullable|numeric',
+            'employer_phic' => 'nullable|numeric',
+            'employer_hdmf' => 'nullable|numeric',
+
+            'tax_sss_premcontribution' => 'nullable|numeric',
+            'tax_sss_wisp' => 'nullable|numeric',
+            'tax_phic' => 'nullable|numeric',
+            'tax_hdmf' => 'nullable|numeric',
+            'totalremittance' => 'nullable|numeric',
+            'taxable_income' => 'nullable|numeric',
+            'tax_cl' => 'nullable|numeric',
+            'tax_excess' => 'nullable|numeric',
+
+            'tax_rate_percentage' => 'nullable|numeric',
+            'tax_rate' => 'nullable|numeric',
+            'fixed_rate' => 'nullable|numeric',
+            'tax_month' => 'nullable|numeric',
+            'tax_cutoff' => 'nullable|numeric',
 
         ]);
 

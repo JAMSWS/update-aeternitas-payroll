@@ -69,6 +69,39 @@ return new class extends Migration
 
             $table->decimal('grosspay',10, 2)->nullable();
 
+            $table->decimal('sss_premcontribution',10, 2)->nullable();
+            $table->decimal('sss_wisp',10, 2)->nullable();
+            $table->decimal('phic',10, 2)->nullable();
+            $table->decimal('hdmf',10, 2)->nullable();
+            $table->decimal('tax',10, 2)->nullable();
+            $table->decimal('sss_loan',10, 2)->nullable();
+            $table->decimal('hdmf_loan',10, 2)->nullable();
+            $table->decimal('uniform',10, 2)->nullable();
+
+            $table->decimal('employer_sss_premcontribution',10, 2)->nullable();
+            $table->decimal('employer_sss_wisp',10, 2)->nullable();
+            $table->decimal('employer_phic',10, 2)->nullable();
+            $table->decimal('employer_hdmf',10, 2)->nullable();
+
+            $table->decimal('tax_sss_premcontribution',10, 2)->nullable();
+            $table->decimal('tax_sss_wisp',10, 2)->nullable();
+            $table->decimal('tax_phic',10, 2)->nullable();
+            $table->decimal('tax_hdmf',10, 2)->nullable();
+            $table->decimal('totalremittance',10, 2)->nullable();
+            $table->decimal('taxable_income',10, 2)->nullable();
+            $table->decimal('tax_cl',10, 2)->nullable();
+            $table->decimal('tax_excess',10, 2)->nullable();
+
+            $table->decimal('tax_rate_percentage',10, 2)->nullable();
+            $table->decimal('tax_rate',10, 2)->nullable();
+            $table->decimal('fixed_rate',10, 2)->nullable();
+            $table->decimal('tax_month',10, 2)->nullable();
+            $table->decimal('tax_cutoff',10, 2)->nullable();
+
+
+
+
+
 
             $table->integer('sss_number')->nullable();
             $table->integer('philhealth_number')->nullable();

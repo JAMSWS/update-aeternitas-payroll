@@ -68,6 +68,14 @@
                             <button class="nav-link" id="allowance-tab" data-bs-toggle="tab" data-bs-target="#allowance-tab-pane" type="button" role="tab" aria-controls="late-tab-pane" aria-selected="false"> Allowance </button>
                         </li>
 
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="sss-philhealth-pagibig-tab" data-bs-toggle="tab" data-bs-target="#sss-philhealth-pagibig-tab-pane" type="button" role="tab" aria-controls="sss-philhealth-pagibig-tab-pane" aria-selected="false"> SSS - PhilHealh - Pag-ibig </button>
+                        </li>
+
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tax-tab" data-bs-toggle="tab" data-bs-target="#tax-tab-pane" type="button" role="tab" aria-controls="tax-tab-pane" aria-selected="false"> Tax </button>
+                        </li>
+
 
 
 
@@ -280,33 +288,58 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <!-- Timekeeping form fields -->
-
-
                                         <div class="mb-3">
-                                            <!-- Add your timekeeping fields here -->
                                             <label for="month_rate_paid_days">Month Rate Paid Days</label>
                                             <input type="number" id="month_rate_paid_days" name="actual_days_worked" value="13"  class="form-control" readonly>
                                         </div>
-
-                                        {{-- <div class="mb-3">
-                                            <label>Legal Holiday Worked (Input per day)</label>
-                                            <input type="number" id="#" step="0.01" name="#"  value="#" placeholder="Leave it blank if None" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label>Special Holiday Worked (Input per day)</label>
-                                            <input type="number" id="#" step="0.01" name="#"  value="#" placeholder="Leave it blank if None" class="form-control">
-                                        </div> --}}
 
                                         <div class="mb-3">
                                             <label>Vacation Leave/Sick Leave <i class="text text-danger"> (Input per day, 0.50 = Half Day) </i></label>
                                             <input type="number" id="vlsl" step="0.01" name="vlsl"  value="{{ $employee->vlsl  }}" placeholder="Leave it blank if None" class="form-control">
                                         </div>
+                                        <hr>
 
-                                        {{-- <div class="mb-3">
-                                            <label for="month_rate_paid_days">Overtime 25% <i class="text text-danger">  (Input per Hour)</i> </label>
-                                            <input type="number" id="#" name="#" value="#"  class="form-control">
-                                        </div> --}}
+                                        <div class="mb-3">
+                                            <label>SSS - Prem. Contribution</label>
+                                            <input type="number" id="sss_premcontribution" step="0.01" name="sss_premcontribution"  value="{{ $employee->sss_premcontribution  }}" placeholder="Leave it blank if None" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>SSS - WISP</label>
+                                            <input type="number" id="sss_wisp" step="0.01" name="sss_wisp"  value="{{ $employee->sss_wisp  }}" placeholder="Leave it blank if None" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>PHIC</label>
+                                            <input type="number" id="phic" step="0.01" name="phic"  value="{{ $employee->phic  }}" placeholder="Leave it blank if None" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>HDMF</label>
+                                            <input type="number" id="hdmf" step="0.01" name="hdmf"  value="{{ $employee->hdmf  }}" placeholder="Leave it blank if None" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>TAX</label>
+                                            <input type="number" id="tax" step="0.01" name="tax"  value="{{ $employee->tax  }}" placeholder="Leave it blank if None" class="form-control" readonly>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>SSS Loan</label>
+                                            <input type="number" id="sss_loan" step="0.01" name="sss_loan"  value="{{ $employee->sss_loan  }}" placeholder="Leave it blank if None" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>HDMF Loan</label>
+                                            <input type="number" id="hdmf_loan" step="0.01" name="hdmf_loan"  value="{{ $employee->hdmf_loan  }}" placeholder="Leave it blank if None" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>UNIFORM</label>
+                                            <input type="number" id="uniform" step="0.01" name="uniform"  value="{{ $employee->uniform  }}" placeholder="Leave it blank if None" class="form-control">
+                                        </div>
+
+
 
                                     </div>
                                 </div>
@@ -450,6 +483,136 @@
                                     </div>
 
                             </div>
+
+
+                            {{-- SSS - Phil Health - Pag-ibig - tax --}}
+                            <div class="p-3 border tab-pane fade" id="sss-philhealth-pagibig-tab-pane" role="tabpanel" aria-labelledby="sss-philhealth-pagibig-tab">
+                                <h2 class="text-success">SSS - PHILHEALTH - PAG-IBIG - TAX</h2> <hr>
+                                    <div class="mb-3">
+                                        <div class="row">
+
+
+                                            <div class="col-md-6">
+                                                <label> <b> Loan</b></label> <br>
+                                                <label> Employee Purchase</label>
+                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+                                                <label> CASH advance </label>
+                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+                                                <label> Uniforms </label>
+                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+
+                                                <hr>
+
+                                                <label> SSS Loan (₱)</label>
+                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+
+                                                <label> Pag-Ibig Loan (₱)</label>
+                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+
+                                                <hr>
+
+                                                <label> Audit/Missing (₱)</label>
+                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+
+
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label> <b> SSS - Prem. Contribution</b></label> <br>
+
+                                                <label> EMPLOYEE</label>
+                                                <input type="number" id="show_sss_premcontribution" name="show_sss_premcontribution" value="#" class="form-control" readonly>
+                                                <label> EMPLOYEER</label>
+                                                <input type="number" id="employer_sss_premcontribution" step="0.01" name="employer_sss_premcontribution" value="{{ $employee->employer_sss_premcontribution }}" class="form-control" >
+
+                                                <hr>
+
+                                                <label> <b> SSS - WISP</b></label> <br>
+
+                                                <label> EMPLOYEE</label>
+                                                <input type="number" id="show_sss_wisp" name="show_sss_wisp" value="#" class="form-control" readonly>
+                                                <label> EMPLOYEER</label>
+                                                <input type="number" id="employer_sss_wisp" step="0.01" name="employer_sss_wisp" value="{{ $employee->employer_sss_wisp }}" class="form-control" >
+
+                                                <hr>
+
+                                                <label> <b> PHILHEALTH</b></label> <br>
+
+                                                <label> EMPLOYEE</label>
+                                                <input type="number" id="show_phic" name="show_phic" value="#" class="form-control" readonly>
+                                                <label> EMPLOYEER</label>
+                                                <input type="number" id="employer_phic" step="0.01" name="employer_phic" value="{{ $employee->employer_phic }}" class="form-control" >
+
+                                                <hr>
+
+                                                <label> <b> HDMF</b></label> <br>
+
+                                                <label> EMPLOYEE</label>
+                                                <input type="number" id="show_hdmf" name="show_hdmf" value="#" class="form-control" readonly>
+                                                <label> EMPLOYEER</label>
+                                                <input type="number" id="employer_hdmf" step="0.01" name="employer_hdmf" value="{{ $employee->employer_hdmf }}" class="form-control" >
+
+                                                <hr>
+
+                                                <label> TAX (₱)</label>
+                                                <input type="number" id="tax_cutoff" name="#" value="#" class="form-control" readonly>
+
+                                                <hr>
+
+                                                <label> Total Deductions (₱)</label>
+                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                            </div>
+
+                            {{-- TAX TAB --}}
+                            <div class="p-3 border tab-pane fade" id="tax-tab-pane" role="tabpanel" aria-labelledby="tax-tab">
+                                <h2 class="text-success">TAX</h2> <hr>
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>BASIC SALARY</label>
+                                                <input type="number" id="show_basic_pay" name="show_basic_pay" value="#" class="form-control" readonly>
+                                                <label>SSS Prem. Contribution</label>
+                                                <input type="number" id="tax_sss_premcontribution" name="tax_sss_premcontribution" value="{{ $employee->tax_sss_premcontribution }}" class="form-control" readonly>
+                                                <label>SSS WISP</label>
+                                                <input type="number" id="tax_sss_wisp" name="tax_sss_wisp" value="{{ $employee->tax_sss_wisp }}" class="form-control" readonly>
+                                                <label>PHIC Contribution</label>
+                                                <input type="number" id="tax_phic" name="tax_phic" value="{{ $employee->tax_phic }}" class="form-control" readonly>
+                                                <label>PAG-IBIG Contribution</label>
+                                                <input type="number" id="tax_hdmf" name="tax_hdmf" value="{{ $employee->tax_hdmf }}" class="form-control" readonly>
+                                                <label>Total Remittance</label>
+                                                <input type="number" id="totalremittance" name="totalremittance" value="{{ $employee->totalremittance }}" class="form-control" readonly>
+                                                <label>Taxable Income</label>
+                                                <input type="number" id="taxable_income" name="taxable_income" value="{{ $employee->taxable_income }}" class="form-control" readonly>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>CL</label>
+                                                <input type="number" id="tax_cl" name="tax_cl" value="{{ $employee->tax_cl }}" class="form-control" >
+                                                <label>Excess <i class="text text-danger">Please update first to calculate!</i></label>
+                                                <input type="number" id="tax_excess" name="tax_excess" value="{{ $employee->tax_excess }}" class="form-control" readonly>
+                                                <label>Tax Rate (Decimal Ex. 15% = 0.15)</label>
+                                                <input type="number" id="tax_rate_percentage" name="tax_rate_percentage" step="0.01" value="{{ $employee->tax_rate_percentage }}" class="form-control" >
+                                                <input type="number" id="tax_rate" name="tax_rate" step="0.01" value="{{ $employee->tax_rate }}" class="form-control" readonly>
+                                                <label>Fixed Rate</label>
+                                                <input type="number" id="fixed_rate" name="fixed_rate" step="0.01" value="{{ $employee->fixed_rate }}" class="form-control" >
+                                                <label>WHTax/month</label>
+                                                <input type="number" id="tax_month" name="tax_month" step="0.01" value="{{ $employee->tax_month }} " class="form-control" readonly>
+                                                <label>WHTax/cut-off</label>
+                                                <input type="number" id="   " name="tax_cutoff" step="0.01" value="{{ $employee->tax_cutoff }}" class="form-control" readonly>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                            </div>
+
+
                         </div>
                         <div>
                             <button type="submit" class="mt-3 text-white btn btn-primary">Update</button>
@@ -466,345 +629,6 @@
 @push('scripts')
 
 
-{{-- <script>
-    // Calculate and display total monthly and bi-monthly totals
-    function calculateTotals() {
-        var basicPay = parseFloat(document.getElementById('basic_pay').value);
-        var allowance = parseFloat(document.getElementById('allowance').value);
-
-        if (!isNaN(basicPay) && !isNaN(allowance)) {
-            var totalMonthly = basicPay + allowance;
-            var biMonthlyTotal = basicPay / 2;
-
-            document.getElementById('total_salary').value = totalMonthly.toFixed(2);
-            document.getElementById('bi_monthly_total_salary').value = biMonthlyTotal.toFixed(2);
-        }
-    }
-
-    // Calculate and display equivalent daily rate
-    function calculateDailyRate() {
-        var basicPay = parseFloat(document.getElementById('basic_pay').value);
-
-        if (!isNaN(basicPay)) {
-            var dailyRate = (basicPay * 12) / 313;
-            document.getElementById('daily_rate').value = dailyRate.toFixed(2);
-        }
-    }
-
-    // Calculate and display Regular Worked Days
-    function calculateRegularWorkedDays() {
-        var monthRatePaidDays = parseFloat(document.getElementById('month_rate_paid_days').value);
-        var absences = parseFloat(document.getElementById('absences').value) || 0;
-
-        if (!isNaN(monthRatePaidDays) && !isNaN(absences)) {
-            var regularWorkedDays = monthRatePaidDays - absences;
-            document.getElementById('regular_worked_days').value = regularWorkedDays.toFixed(2);
-        }
-    }
-
-    // Calculate and display Leave
-    function calculateLeaveAmount() {
-        var dailyRate = parseFloat(document.getElementById('daily_rate').value);
-        var usedCurrentCutOff = parseFloat(document.getElementById('used_current_cut_off').value) || 0;
-
-        if (!isNaN(dailyRate) && !isNaN(usedCurrentCutOff)) {
-            var leaveAmount = dailyRate * usedCurrentCutOff;
-            document.getElementById('leave_amount').value = leaveAmount.toFixed(2);
-        }
-    }
-
-    // Calculate and display RWD amount
-    function calculateFinalAmount() {
-        var biMonthlyRate = parseFloat(document.getElementById('bi_monthly_total_salary').value);
-        var leaveAmount = parseFloat(document.getElementById('leave_amount').value);
-        var monthRatePaidDays = parseFloat(document.getElementById('month_rate_paid_days').value);
-        var regularWorkedDays = parseFloat(document.getElementById('regular_worked_days').value);
-        var usedCurrentCutOff = parseFloat(document.getElementById('used_current_cut_off').value);
-        var dailyRate = parseFloat(document.getElementById('daily_rate').value);
-
-        if (!isNaN(biMonthlyRate) && !isNaN(leaveAmount) && !isNaN(monthRatePaidDays) && !isNaN(regularWorkedDays) && !isNaN(usedCurrentCutOff) && !isNaN(dailyRate)) {
-            var finalAmount = (biMonthlyRate - leaveAmount) - ((monthRatePaidDays - regularWorkedDays - usedCurrentCutOff) * dailyRate);
-            document.getElementById('rwd_amount').value = finalAmount.toFixed(2);
-        }
-    }
-
-    // Calculate and display Legal Holiday amount
-    function calculateLhdAmount() {
-        var legalWorkedDays = parseFloat(document.getElementById('legal_worked_days').value);
-        var dailyRate = parseFloat(document.getElementById('daily_rate').value);
-
-        if (!isNaN(legalWorkedDays) && !isNaN(dailyRate)) {
-            var lhdAmount = legalWorkedDays * dailyRate * 1;
-            document.getElementById('lhd_amount').value = lhdAmount.toFixed(2);
-        }
-    }
-
-    // Calculate and display Special Holiday amount
-    function calculateSpecialAmount() {
-        var specialWorkedDays = parseFloat(document.getElementById('special_worked_days').value);
-        var dailyRate = parseFloat(document.getElementById('daily_rate').value);
-
-        if (!isNaN(specialWorkedDays) && !isNaN(dailyRate)) {
-            var specialRate = dailyRate * 0.3;
-            var specialAmount = specialRate * specialWorkedDays;
-            document.getElementById('special_rate').value = specialRate.toFixed(2);
-            document.getElementById('special_amount').value = specialAmount.toFixed(2);
-        }
-    }
-
-    // Total worked days
-    function calculateTotalWorkedDays() {
-        var regularWorkedDays = parseFloat(document.getElementById('regular_worked_days').value);
-        var legalWorkedDays = parseFloat(document.getElementById('legal_worked_days').value);
-        var specialWorkedDays = parseFloat(document.getElementById('special_worked_days').value);
-        var totalWorkedDays = 0;
-
-        if (!isNaN(regularWorkedDays)) {
-            totalWorkedDays += regularWorkedDays;
-        }
-        if (!isNaN(legalWorkedDays)) {
-            totalWorkedDays += legalWorkedDays;
-        }
-        if (!isNaN(specialWorkedDays)) {
-            totalWorkedDays += specialWorkedDays;
-        }
-
-        document.getElementById('total_worked_days').value = totalWorkedDays.toFixed(2);
-    }
-
-    // Calculate total basic pay
-    function calculateTotalBasicPay() {
-        var totalRegularDays = parseFloat(document.getElementById('rwd_amount').value);
-        var totalLegalDays = parseFloat(document.getElementById('lhd_amount').value);
-        var totalSpecialDays = parseFloat(document.getElementById('special_amount').value);
-
-        var totalBasicPay = totalRegularDays + totalLegalDays + totalSpecialDays;
-
-        document.getElementById('total_basic_pay').value = totalBasicPay.toFixed(2);
-    }
-
-    // Overtime rates and amounts
-    function calculateOvertimeRate25() {
-        var dailyRate = parseFloat(document.getElementById('daily_rate').value) || 0;
-        var overtimeRate25 = (dailyRate / 8) * 1.25;
-        document.getElementById('overtime_rate25').value = overtimeRate25.toFixed(2);
-    }
-
-    function calculateOTAmount25() {
-        var overtimeRate25 = parseFloat(document.getElementById('overtime_rate25').value) || 0;
-        var otHours25 = parseFloat(document.getElementById('ot_hours25').value) || 0;
-        var otAmount25 = overtimeRate25 * otHours25;
-        document.getElementById('ot_amount25').value = otAmount25.toFixed(2);
-        calculateTotalOTAmount(); // Recalculate total OT amount whenever 25% OT amount changes
-    }
-
-    function calculateOvertimeRate30() {
-        var dailyRate = parseFloat(document.getElementById('daily_rate').value) || 0;
-        var overtimeRate30 = (dailyRate / 8) * 0.30;
-        document.getElementById('overtime_rate30').value = overtimeRate30.toFixed(2);
-    }
-
-    function calculateOTAmount30() {
-        var overtimeRate30 = parseFloat(document.getElementById('overtime_rate30').value) || 0;
-        var otHours30 = parseFloat(document.getElementById('ot_hours30').value) || 0;
-        var otAmount30 = overtimeRate30 * otHours30;
-        document.getElementById('ot_amount30').value = otAmount30.toFixed(2);
-        calculateTotalOTAmount(); // Recalculate total OT amount whenever 30% OT amount changes
-    }
-
-    function calculateOvertimeRate100() {
-        var dailyRate = parseFloat(document.getElementById('daily_rate').value) || 0;
-        var overtimeRate100 = (dailyRate / 8) * 1;
-        document.getElementById('overtime_rate100').value = overtimeRate100.toFixed(2);
-    }
-
-    function calculateOTAmount100() {
-        var overtimeRate100 = parseFloat(document.getElementById('overtime_rate100').value) || 0;
-        var otHours100 = parseFloat(document.getElementById('ot_hours100').value) || 0;
-        var otAmount100 = overtimeRate100 * otHours100;
-        document.getElementById('ot_amount100').value = otAmount100.toFixed(2);
-        calculateTotalOTAmount(); // Recalculate total OT amount whenever 100% OT amount changes
-    }
-
-    function calculateTotalOTAmount() {
-        var otAmount25 = parseFloat(document.getElementById('ot_amount25').value) || 0;
-        var otAmount30 = parseFloat(document.getElementById('ot_amount30').value) || 0;
-        var otAmount100 = parseFloat(document.getElementById('ot_amount100').value) || 0;
-        var totalOTAmount = otAmount25 + otAmount30 + otAmount100;
-        document.getElementById('total_ot').value = totalOTAmount.toFixed(2);
-        calculateTotalBasicPayPlusOT(); // Recalculate Basic Pay + OT whenever total OT amount changes
-    }
-
-    function calculateTotalBasicPayPlusOT() {
-        var totalBasicPay = parseFloat(document.getElementById('total_basic_pay').value) || 0;
-        var totalOTAmount = parseFloat(document.getElementById('total_ot').value) || 0;
-        var totalBasicPayPlusOT = totalBasicPay + totalOTAmount;
-        document.getElementById('total_basic_pay_plus_ot').value = totalBasicPayPlusOT.toFixed(2);
-        calculateTotalDeductions(); // Ensure deductions are recalculated when total basic pay plus OT changes
-    }
-
-
-    function calculateUndertimeDeduction() {
-        var totalUndertimeHours = parseFloat(document.getElementById('ut').value) || 0;
-        var dailyRate = parseFloat(document.getElementById('daily_rate').value) || 0;
-        var undertimeDeduction = (dailyRate / 8) * totalUndertimeHours;
-        document.getElementById('ut_deduction').value = undertimeDeduction.toFixed(2);
-        calculateTotalDeductions(); // Ensure total deductions are recalculated when undertime deduction changes
-    }
-
-    function calculateTardinessDeduction() {
-        var totalTardinessMinutes = parseFloat(document.getElementById('total_tardiness').value) || 0;
-        var dailyRate = parseFloat(document.getElementById('daily_rate').value) || 0;
-        var tardinessDeduction = (dailyRate / 480) * totalTardinessMinutes;
-        document.getElementById('tardiness_deduction').value = tardinessDeduction.toFixed(2);
-        calculateTotalDeductions(); // Ensure total deductions are recalculated when tardiness deduction changes
-    }
-
-    function calculateTotalDeductions() {
-        var utDeduction = parseFloat(document.getElementById('ut_deduction').value) || 0;
-        var tardinessDeduction = parseFloat(document.getElementById('tardiness_deduction').value) || 0;
-        var totalDeductions = utDeduction + tardinessDeduction;
-        document.getElementById('total_deductions').value = totalDeductions.toFixed(2);
-        calculateTotalNetBasicPay(); // Ensure net basic pay is recalculated when total deductions change
-    }
-
-    function calculateTotalNetBasicPay() {
-        var totalBasicPayPlusOT = parseFloat(document.getElementById('total_basic_pay_ot').value) || 0;
-        var totalDeductions = parseFloat(document.getElementById('total_deductions').value) || 0;
-        var totalNetBasicPay = totalBasicPayPlusOT - totalDeductions;
-        document.getElementById('total_net_basic_pay').value = totalNetBasicPay.toFixed(2);
-    }
-
-    // Calculate and display Charges Amount
-    function calculateCharges() {
-        var missingLostQty = parseFloat(document.getElementById('missing_lost_qty').value) || 0;
-        var chargesAmount = parseFloat(document.getElementById('charges_amount').value) || 0;
-        var totalCharges = missingLostQty * chargesAmount;
-        document.getElementById('total_charges').value = totalCharges.toFixed(2);
-    }
-
-    function calculateNightDifferentialRate() {
-        var dailyRate = parseFloat(document.getElementById('daily_rate').value) || 0;
-        var ndRate = (dailyRate / 8) * 0.1;
-        document.getElementById('nd_rate').value = ndRate.toFixed(2);
-    }
-
-    function calculateNDAmount() {
-        var ndRate = parseFloat(document.getElementById('nd_rate').value) || 0;
-        var ndHours = parseFloat(document.getElementById('nd_hours').value) || 0;
-        var ndAmount = ndRate * ndHours;
-        document.getElementById('nd_amount').value = ndAmount.toFixed(2);
-    }
-
-    document.getElementById('basic_pay').addEventListener('input', function() {
-        calculateTotals();
-        calculateDailyRate();
-    });
-
-    document.getElementById('allowance').addEventListener('input', function() {
-        calculateTotals();
-    });
-
-    document.getElementById('month_rate_paid_days').addEventListener('input', function() {
-        calculateRegularWorkedDays();
-        calculateFinalAmount();
-    });
-
-    document.getElementById('absences').addEventListener('input', function() {
-        calculateRegularWorkedDays();
-        calculateFinalAmount();
-    });
-
-    document.getElementById('used_current_cut_off').addEventListener('input', function() {
-        calculateLeaveAmount();
-        calculateFinalAmount();
-    });
-
-    document.getElementById('daily_rate').addEventListener('input', function() {
-        calculateFinalAmount();
-        calculateLeaveAmount();
-        calculateOvertimeRate25();
-        calculateOvertimeRate30();
-        calculateOvertimeRate100();
-        calculateUndertimeDeduction();
-        calculateTardinessDeduction();
-    });
-
-    document.getElementById('legal_worked_days').addEventListener('input', function() {
-        calculateLhdAmount();
-        calculateTotalWorkedDays();
-        calculateTotalBasicPay();
-    });
-
-    document.getElementById('special_worked_days').addEventListener('input', function() {
-        calculateSpecialAmount();
-        calculateTotalWorkedDays();
-        calculateTotalBasicPay();
-    });
-
-    document.getElementById('ot_hours25').addEventListener('input', function() {
-        calculateOTAmount25();
-    });
-
-    document.getElementById('ot_hours30').addEventListener('input', function() {
-        calculateOTAmount30();
-    });
-
-    document.getElementById('ot_hours100').addEventListener('input', function() {
-        calculateOTAmount100();
-    });
-
-    document.getElementById('ut').addEventListener('input', function() {
-        calculateUndertimeDeduction();
-    });
-
-    document.getElementById('total_tardiness').addEventListener('input', function() {
-        calculateTardinessDeduction();
-    });
-
-    document.getElementById('missing_lost_qty').addEventListener('input', function() {
-        calculateCharges();
-    });
-
-    document.getElementById('charges_amount').addEventListener('input', function() {
-        calculateCharges();
-    });
-
-    // Calculate ND amount when ND hours change
-    document.getElementById('nd_hours').addEventListener('input', function() {
-            calculateNDAmount();
-    });
-
-    // Initialize calculations on page load
-    window.addEventListener('DOMContentLoaded', function() {
-        calculateTotals();
-        calculateDailyRate();
-        calculateRegularWorkedDays();
-        calculateLeaveAmount();
-        calculateFinalAmount();
-        calculateLhdAmount();
-        calculateSpecialAmount();
-        calculateTotalWorkedDays();
-        calculateTotalBasicPay();
-        calculateOvertimeRate25();
-        calculateOvertimeRate30();
-        calculateOvertimeRate100();
-        calculateOTAmount25();
-        calculateOTAmount30();
-        calculateOTAmount100();
-        calculateNightDifferentialRate();
-        calculateNDAmount();
-        calculateUndertimeDeduction();
-        calculateTardinessDeduction();
-        calculateTotalDeductions();
-        calculateTotalNetBasicPay();
-        calculateCharges();
-        calculateTotalBasicPayPlusOT();
-
-    });
-</script> --}}
-
-{{-- old script up to late deduction function july 22 2:40pm --}}
 <script>
     // Calculate and display total monthly and bi-monthly totals
     function calculateTotals() {
@@ -851,22 +675,6 @@
         }
     }
 
-    //Calculate and display rwd amount
-
-    // function calculateFinalAmount() {
-    //     var biMonthlyRate = parseFloat(document.getElementById('bi_monthly_total_salary').value);
-    //     var leaveAmount = parseFloat(document.getElementById('leave_amount').value);
-    //     var monthRatePaidDays = parseFloat(document.getElementById('month_rate_paid_days').value);
-    //     var regularWorkedDays = parseFloat(document.getElementById('regular_worked_days').value);
-    //     var vlsl = parseFloat(document.getElementById('vlsl').value) || 0;
-    //     var dailyRate = parseFloat(document.getElementById('daily_rate').value);
-
-    //     if (!isNaN(biMonthlyRate) && !isNaN(leaveAmount) && !isNaN(monthRatePaidDays) && !isNaN(regularWorkedDays) && !isNaN(vlsl) && !isNaN(dailyRate)) {
-    //         var finalAmount = (biMonthlyRate - leaveAmount) - ((monthRatePaidDays - regularWorkedDays - vlsl) * dailyRate);
-    //         document.getElementById('rwd_amount').value = finalAmount.toFixed(2);
-    //     }
-    // }
-
     //debug
     function calculateFinalAmount() {
         var biMonthlyRate = parseFloat(document.getElementById('bi_monthly_total_salary').value);
@@ -883,9 +691,7 @@
         }
     }
 
-
     //Legal Holiday script
-
     function calculateLhdAmount() {
         var legalWorkedDays = parseFloat(document.getElementById('legal_worked_days').value);
         var dailyRate = parseFloat(document.getElementById('daily_rate').value);
@@ -1055,12 +861,118 @@
         document.getElementById('grosspay').value = totalGrosspay.toFixed(2);
     }
 
+    // SSS PHILHEALTH PAG IBIG
+    function showSSSpremcontribution() {
+        var sssprecontribution = parseFloat(document.getElementById('sss_premcontribution').value);
+        var showsssprecontribution = sssprecontribution;
+        document.getElementById('show_sss_premcontribution').value = showsssprecontribution.toFixed(2);
 
+    }
 
+    function showSSSwisp() {
+        var ssswisp = parseFloat(document.getElementById('sss_wisp').value);
+        var showssswisp = ssswisp;
+        document.getElementById('show_sss_wisp').value = showssswisp.toFixed(2);
 
+    }
 
+    function showphic() {
+        var phic = parseFloat(document.getElementById('phic').value);
+        var showphic = phic;
+        document.getElementById('show_phic').value = showphic.toFixed(2);
 
+    }
 
+    function showhdmf() {
+        var hdmf = parseFloat(document.getElementById('hdmf').value);
+        var showhdmf = hdmf;
+        document.getElementById('show_hdmf').value = showhdmf.toFixed(2);
+
+    }
+
+    //TAX
+    function showbasicpay() {
+        var basic_pay = parseFloat(document.getElementById('basic_pay').value) || 0;
+        var show_basic_pay = basic_pay;
+        document.getElementById('show_basic_pay').value = show_basic_pay.toFixed(2);
+
+    }
+
+    function showTAXSSSpremcontribution() {
+        var sssprecontribution = parseFloat(document.getElementById('sss_premcontribution').value) || 0;
+        var showsssprecontribution = sssprecontribution * 2;
+        document.getElementById('tax_sss_premcontribution').value = showsssprecontribution.toFixed(2);
+
+    }
+
+    function showTAXSSSwisp() {
+        var ssswisp = parseFloat(document.getElementById('sss_wisp').value) || 0;
+        var showssswisp = ssswisp * 2;
+        document.getElementById('tax_sss_wisp').value = showssswisp.toFixed(2);
+
+    }
+
+    function showTAXphic() {
+        var phic = parseFloat(document.getElementById('phic').value) || 0;
+        var showphic = phic * 2;
+        document.getElementById('tax_phic').value = showphic.toFixed(2);
+
+    }
+
+    function showTAXhdmf() {
+        var hdmf = parseFloat(document.getElementById('hdmf').value) || 0;
+        var showhdmf = hdmf * 2;
+        document.getElementById('tax_hdmf').value = showhdmf.toFixed(2);
+
+    }
+
+    function calculateTotalRemittance() {
+        var tax_sss_premcontribution = parseFloat(document.getElementById('tax_sss_premcontribution').value) || 0;
+        var tax_sss_wisp = parseFloat(document.getElementById('tax_sss_wisp').value) || 0;
+        var tax_phic = parseFloat(document.getElementById('tax_phic').value) || 0;
+        var tax_hdmf = parseFloat(document.getElementById('tax_hdmf').value) || 0;
+        var totalremittance = tax_sss_premcontribution + tax_sss_wisp + tax_phic + tax_hdmf;
+        document.getElementById('totalremittance').value = totalremittance.toFixed(2);
+
+    }
+
+    function calculateTaxableincome() {
+        var basic_pay = parseFloat(document.getElementById('basic_pay').value) || 0;
+        var totalremittance = parseFloat(document.getElementById('totalremittance').value) || 0;
+        var taxable_income = basic_pay - totalremittance;
+        document.getElementById('taxable_income').value = taxable_income.toFixed(2);
+    }
+
+    function calculateExcess() {
+        var taxableincome = parseFloat(document.getElementById('taxable_income').value) || 0;
+        var taxcl = parseFloat(document.getElementById('tax_cl').value);
+        var taxexcess =  taxableincome - taxcl;
+        document.getElementById('tax_excess').value = taxexcess.toFixed(2);
+    }
+
+    function calculateTaxRate() {
+        var taxexcess = parseFloat(document.getElementById('tax_excess').value) || 0;
+        var taxratepercentage = parseFloat(document.getElementById('tax_rate_percentage').value) || 0;
+        var taxrate =  taxexcess * taxratepercentage;
+        document.getElementById('tax_rate').value = taxrate.toFixed(2);
+    }
+
+     function calculateTaxMonth() {
+         var taxrate = parseFloat(document.getElementById('tax_rate').value) || 0;
+         var fixedrate = parseFloat(document.getElementById('fixed_rate').value) || 0;
+         var taxmonth =  taxrate + fixedrate;
+         document.getElementById('tax_month').value = taxmonth.toFixed(2);
+
+     }
+
+     function calculateTaxcutoff() {
+         var taxmonth = parseFloat(document.getElementById('tax_month').value) || 0;
+         var taxcutoff =  taxmonth / 2;
+         document.getElementById('tax_cutoff').value = taxcutoff.toFixed(2);
+
+     }
+
+    // tax_rate fixed_rate tax_month
 
     document.addEventListener('DOMContentLoaded', function() {
         // Calculate overtime rate and amounts when daily rate changes
@@ -1130,9 +1042,16 @@
             calculateGrosspay();
         });
 
-
-
         // Initial calculations on page load
+        calculateTotals();
+        calculateDailyRate();
+        calculateRegularWorkedDays();
+        calculateLeaveAmount();
+        calculateFinalAmount();
+        calculateLhdAmount();
+        calculateSpecialAmount();
+        calculateTotalWorkedDays();
+        calculateTotalBasicPay();
         calculateOvertimeRate25();
         calculateOTAmount25();
         calculateOvertimeRate30();
@@ -1141,13 +1060,29 @@
         calculateOTAmount100();
         calculateNightDifferentialRate();
         calculateNDAmount();
-        calculateTotalOTAmount(); // Initial total OT amount calculation
-        calculateTotalBasicPayPlusOT(); // Initial total basic pay plus OT calculation
+        calculateTotalOTAmount();
+        calculateTotalBasicPayPlusOT();
         calculateLateRate();
         calculateLateAmount();
         calculateTotalCharges();
         calculateHalfAllowance();
         calculateGrosspay();
+        showSSSpremcontribution();
+        showSSSwisp();
+        showphic();
+        showhdmf();
+        showbasicpay();
+        showTAXSSSpremcontribution();
+        showTAXSSSwisp();
+        showTAXphic();
+        showTAXhdmf();
+        calculateTotalRemittance();
+        calculateTaxableincome();
+        calculateExcess();
+        calculateTaxRate();
+        calculateTaxMonth();
+        calculateTaxcutoff();
+
     });
 
     // Initial calculation on page load
@@ -1176,6 +1111,21 @@
         calculateTotalCharges();
         calculateHalfAllowance();
         calculateGrosspay();
+        showSSSpremcontribution();
+        showSSSwisp();
+        showphic();
+        showhdmf();
+        showbasicpay();
+        showTAXSSSpremcontribution();
+        showTAXSSSwisp();
+        showTAXphic();
+        showTAXhdmf();
+        calculateTotalRemittance();
+        calculateTaxableincome();
+        calculateExcess();
+        calculateTaxRate();
+        calculateTaxMonth();
+        calculateTaxcutoff();
     };
 
 
@@ -1227,10 +1177,50 @@
         calculateTotalBasicPay();
     });
 
+    document.getElementById('sss_premcontribution').addEventListener('input', function() {
+        showSSSpremcontribution();
+        showTAXSSSpremcontribution();
+        calculateTotalRemittance();
+        calculateTaxableincome();
+
+    });
+
+    document.getElementById('sss_wisp').addEventListener('input', function() {
+        showSSSwisp();
+        showTAXSSSwisp();
+        calculateTotalRemittance();
+        calculateTaxableincome();
+    });
 
 
+    document.getElementById('phic').addEventListener('input', function() {
+        showphic();
+        showTAXphic();
+        calculateTotalRemittance();
+        calculateTaxableincome();
+    });
 
 
+    document.getElementById('hdmf').addEventListener('input', function() {
+        showhdmf();
+        showTAXhdmf();
+        calculateTotalRemittance();
+        calculateTaxableincome();
+
+    });
+
+    document.getElementById('basic_pay').addEventListener('input', function() {
+        showbasicpay();
+        calculateTaxableincome();
+    });
+
+    document.getElementById('tax_excess').addEventListener('input', function() {
+        calculateExcess();
+        calculateTaxableincome();
+        calculateTaxRate();
+        calculateTaxMonth();
+        calculateTaxcutoff();
+    });
 
 </script>
 
@@ -1270,6 +1260,9 @@
         calculateTotalNetBasicPay();
         calculateCharges();
         calculateGrosspay();
+        showSSSpremcontribution();
+
+
 
         var inputs = document.querySelectorAll('input[type="number"]');
         inputs.forEach(function(input) {
