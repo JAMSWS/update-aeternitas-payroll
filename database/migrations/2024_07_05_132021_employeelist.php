@@ -102,10 +102,7 @@ return new class extends Migration
             $table->decimal('tax_month',10, 2)->nullable();
             $table->decimal('tax_cutoff',10, 2)->nullable();
             $table->decimal('total_deduction',10, 2)->nullable();
-
-
-
-
+            $table->decimal('netpay',10, 2)->nullable();
 
 
 

@@ -105,6 +105,7 @@ class hrdepartment extends Model
         'tax_month',
         'tax_cutoff',
         'total_deduction',
+        'netpay',
 
 
 

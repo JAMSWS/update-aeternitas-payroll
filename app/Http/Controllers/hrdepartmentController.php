@@ -116,6 +116,7 @@ class hrdepartmentController extends Controller
             'fixed_rate' => 'nullable|numeric',
             'tax_month' => 'nullable|numeric',
             'tax_cutoff' => 'nullable|numeric',
+            'netpay' => 'nullable|numeric',
 
 
 
@@ -139,9 +140,10 @@ class hrdepartmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(hrdepartment $hrdepartment)
+    public function show($id)
     {
-        //
+        $employee = hrdepartment::findOrFail($id);
+        return view('hrdepartment.employee.show', compact('employee'));
     }
 
     /**
@@ -245,6 +247,7 @@ class hrdepartmentController extends Controller
             'tax_month' => 'nullable|numeric',
             'tax_cutoff' => 'nullable|numeric',
             'total_deduction' => 'nullable|numeric',
+            'netpay' => 'nullable|numeric',
 
         ]);
 

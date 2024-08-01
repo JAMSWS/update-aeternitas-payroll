@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PayslipController;
 use App\Http\Controllers\ProfileController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,11 +28,13 @@ Route::middleware('auth')->group(function () {
 Route::prefix('aeternitas')->group(function() {
 
 
+    Route::get('/payslip/{id}/pdf', [PayslipController::class, 'generatePDF'])->name('payslip.pdf');
         //this is for hr department that add employee and etc...
     Route::controller(App\Http\Controllers\hrdepartmentController::class)->group(function () {
     Route::get('/employee', 'index')->name('employees.index');
     Route::get('/employee/create', 'create')->name('employees.create');
     Route::post('/employee', 'store')->name('employees.store');
+    Route::get('/employee/{id}', 'show')->name('employees.show');
     Route::get('/employee/{id}/edit', 'edit')->name('employees.edit');
     Route::put('/employee/{id}', 'update')->name('employees.update');
     Route::delete('/employee/{id}', 'destroy')->name('employees.destroy');

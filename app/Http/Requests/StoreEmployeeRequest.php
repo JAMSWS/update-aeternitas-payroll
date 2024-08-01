@@ -104,7 +104,7 @@ class StoreEmployeeRequest extends FormRequest
             'tax_month' => 'nullable|numeric',
             'tax_cutoff' => 'nullable|numeric',
             'total_deduction' => 'nullable|numeric',
-
+            'netpay' => 'nullable|numeric',
 
 
 
