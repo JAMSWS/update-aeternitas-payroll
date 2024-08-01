@@ -76,7 +76,11 @@ return new class extends Migration
             $table->decimal('tax',10, 2)->nullable();
             $table->decimal('sss_loan',10, 2)->nullable();
             $table->decimal('hdmf_loan',10, 2)->nullable();
+            $table->decimal('employee_purchase',10, 2)->nullable();
             $table->decimal('uniform',10, 2)->nullable();
+            $table->decimal('cash_advance',10, 2)->nullable();
+            $table->decimal('otherdeduction',10, 2)->nullable();
+
 
             $table->decimal('employer_sss_premcontribution',10, 2)->nullable();
             $table->decimal('employer_sss_wisp',10, 2)->nullable();
@@ -97,6 +101,8 @@ return new class extends Migration
             $table->decimal('fixed_rate',10, 2)->nullable();
             $table->decimal('tax_month',10, 2)->nullable();
             $table->decimal('tax_cutoff',10, 2)->nullable();
+            $table->decimal('total_deduction',10, 2)->nullable();
+
 
 
 

@@ -198,8 +198,18 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label>Gross Pay (₱) <i class="text text-danger"> Make Sure to update double times to calculate the amount!</i></label>
+                                            <label>Gross Pay (₱) <i class="text text-danger"> </i></label>
                                             <input type="number" id="grosspay" name="grosspay" value="{{ $employee->grosspay }}" class="form-control" readonly>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>Total Deduction (₱) <i class="text text-danger"> </i></label>
+                                            <input type="number" id="#" name="#" step="0.01" value="{{ $employee->total_deduction }}" class="form-control" readonly>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label>Net Pay (₱) <i class="text text-danger"> Make Sure to update double times to calculate the amount!</i></label>
+                                            <input type="number" id="netpay" name="netpay" value="#" class="form-control" readonly>
                                         </div>
 
                                     </div>
@@ -285,64 +295,84 @@
                             <div class="p-3 border tab-pane fade" id="timekeeping2-tab-pane" role="tabpanel" aria-labelledby="timekeeping2-tab">
                                 <!-- regular worked days Tab Content -->
                                 <h2 class="text-success">Time Keeping</h2> <hr>
-                                <div class="row">
-                                    <div class="col-md-12">
+                                
+
                                         <!-- Timekeeping form fields -->
-                                        <div class="mb-3">
-                                            <label for="month_rate_paid_days">Month Rate Paid Days</label>
-                                            <input type="number" id="month_rate_paid_days" name="actual_days_worked" value="13"  class="form-control" readonly>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label for="month_rate_paid_days">Month Rate Paid Days</label>
+                                                    <input type="number" id="month_rate_paid_days" name="actual_days_worked" value="13"  class="form-control" readonly>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label>Vacation Leave/Sick Leave <i class="text text-danger"> (Input per day, 0.50 = Half Day) </i></label>
+                                                    <input type="number" id="vlsl" step="0.01" name="vlsl"  value="{{ $employee->vlsl  }}" placeholder="Leave it blank if None" class="form-control">
+                                                </div>
+                                                <hr>
+
+                                                <div class="mb-3">
+                                                    <label>SSS - Prem. Contribution</label>
+                                                    <input type="number" id="sss_premcontribution" step="0.01" name="sss_premcontribution"  value="{{ $employee->sss_premcontribution  }}" placeholder="Leave it blank if None" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label>SSS - WISP</label>
+                                                    <input type="number" id="sss_wisp" step="0.01" name="sss_wisp"  value="{{ $employee->sss_wisp  }}" placeholder="Leave it blank if None" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label>PHIC</label>
+                                                    <input type="number" id="phic" step="0.01" name="phic"  value="{{ $employee->phic  }}" placeholder="Leave it blank if None" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label>HDMF</label>
+                                                    <input type="number" id="hdmf" step="0.01" name="hdmf"  value="{{ $employee->hdmf  }}" placeholder="Leave it blank if None" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label>TAX</label>
+                                                    <input type="number" id="show_tax" step="0.01" name="#"  value="#"  class="form-control" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label>SSS Loan</label>
+                                                    <input type="number" id="sss_loan" step="0.01" name="sss_loan"  value="{{ $employee->sss_loan  }}" placeholder="Leave it blank if None" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label>HDMF Loan (Pag-ibig)</label>
+                                                    <input type="number" id="hdmf_loan" step="0.01" name="hdmf_loan"  value="{{ $employee->hdmf_loan  }}" placeholder="Leave it blank if None" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label>EMPLOYEE PURCHASE</label>
+                                                    <input type="number" id="employee_purchase" step="0.01" name="employee_purchase"  value="{{ $employee->employee_purchase  }}" placeholder="Leave it blank if None" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label>UNIFORM</label>
+                                                    <input type="number" id="uniform" step="0.01" name="uniform"  value="{{ $employee->uniform  }}" placeholder="Leave it blank if None" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label>CASH advance</label>
+                                                    <input type="number" id="cash_advance" step="0.01" name="cash_advance"  value="{{ $employee->cash_advance  }}" placeholder="Leave it blank if None" class="form-control">
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label>Charges  ₱<i class="text text-danger"> Missing/Loss Item </i></label>
+                                                    <input type="number" id="missing_charges" name="missing_charges" value="{{ $employee->missing_charges }}" class="form-control" >
+                                                </div>
+                                            </div>
+
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label>Vacation Leave/Sick Leave <i class="text text-danger"> (Input per day, 0.50 = Half Day) </i></label>
-                                            <input type="number" id="vlsl" step="0.01" name="vlsl"  value="{{ $employee->vlsl  }}" placeholder="Leave it blank if None" class="form-control">
-                                        </div>
-                                        <hr>
-
-                                        <div class="mb-3">
-                                            <label>SSS - Prem. Contribution</label>
-                                            <input type="number" id="sss_premcontribution" step="0.01" name="sss_premcontribution"  value="{{ $employee->sss_premcontribution  }}" placeholder="Leave it blank if None" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label>SSS - WISP</label>
-                                            <input type="number" id="sss_wisp" step="0.01" name="sss_wisp"  value="{{ $employee->sss_wisp  }}" placeholder="Leave it blank if None" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label>PHIC</label>
-                                            <input type="number" id="phic" step="0.01" name="phic"  value="{{ $employee->phic  }}" placeholder="Leave it blank if None" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label>HDMF</label>
-                                            <input type="number" id="hdmf" step="0.01" name="hdmf"  value="{{ $employee->hdmf  }}" placeholder="Leave it blank if None" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label>TAX</label>
-                                            <input type="number" id="tax" step="0.01" name="tax"  value="{{ $employee->tax  }}" placeholder="Leave it blank if None" class="form-control" readonly>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label>SSS Loan</label>
-                                            <input type="number" id="sss_loan" step="0.01" name="sss_loan"  value="{{ $employee->sss_loan  }}" placeholder="Leave it blank if None" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label>HDMF Loan</label>
-                                            <input type="number" id="hdmf_loan" step="0.01" name="hdmf_loan"  value="{{ $employee->hdmf_loan  }}" placeholder="Leave it blank if None" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label>UNIFORM</label>
-                                            <input type="number" id="uniform" step="0.01" name="uniform"  value="{{ $employee->uniform  }}" placeholder="Leave it blank if None" class="form-control">
-                                        </div>
 
 
 
-                                    </div>
-                                </div>
                             </div>
 
                             {{-- Overtime tab --}}
@@ -461,11 +491,10 @@
 
                                     <div class="mb-3">
 
-                                        <label>Charges  ₱<i class="text text-danger"> Missing/Loss Item <b> Note: Please Input 0 if none or Existing data to recalculate the Total Charge!</b></i></label>
-                                        <input type="number" id="missing_charges" name="missing_charges" value="{{ $employee->missing_charges }}" class="form-control" >
 
-                                        <label>Total Charges (₱) <i class="text text-danger"></i> </label>
-                                        <input type="number" id="total_charges" name="total_charges" value="{{ $employee->total_charges }}"  class="form-control" readonly>
+
+                                        {{-- <label>Total Charges (₱) <i class="text text-danger"></i> </label> --}}
+                                        <input type="number" id="total_charges" name="total_charges" value="{{ $employee->total_charges }}"  class="form-control" readonly hidden>
                                     </div>
 
                             </div>
@@ -495,24 +524,24 @@
                                             <div class="col-md-6">
                                                 <label> <b> Loan</b></label> <br>
                                                 <label> Employee Purchase</label>
-                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+                                                <input type="number" id="#" name="#" value="{{ $employee->employee_purchase }}" class="form-control" readonly>
                                                 <label> CASH advance </label>
-                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+                                                <input type="number" id="#" name="#" value="{{ $employee->cash_advance }}"  class="form-control" readonly>
                                                 <label> Uniforms </label>
-                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+                                                <input type="number" id="#" name="#" value="{{ $employee->uniform }}" class="form-control" readonly>
 
                                                 <hr>
 
                                                 <label> SSS Loan (₱)</label>
-                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+                                                <input type="number" id="#" name="#" value="{{ $employee->sss_loan }}" class="form-control" readonly>
 
                                                 <label> Pag-Ibig Loan (₱)</label>
-                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+                                                <input type="number" id="#" name="#" value="{{ $employee->hdmf_loan }}" class="form-control" readonly>
 
                                                 <hr>
 
-                                                <label> Audit/Missing (₱)</label>
-                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+                                                <label> Other Deduction (₱)</label>
+                                                <input type="number" id="otherdeduction" name="otherdeduction" value="{{ $employee->otherdeduction }}" class="form-control" step="0.01" >
 
 
                                             </div>
@@ -555,12 +584,12 @@
                                                 <hr>
 
                                                 <label> TAX (₱)</label>
-                                                <input type="number" id="tax_cutoff" name="#" value="#" class="form-control" readonly>
+                                                <input type="number" id="show_tax2" name="#" value="#" class="form-control" readonly>
 
                                                 <hr>
 
                                                 <label> Total Deductions (₱)</label>
-                                                <input type="number" id="#" name="#" value="#" class="form-control" readonly>
+                                                <input type="number" id="total_deduction" name="total_deduction" step="0.01" value="#" class="form-control" readonly>
                                             </div>
 
                                         </div>
@@ -602,7 +631,7 @@
                                                 <label>WHTax/month</label>
                                                 <input type="number" id="tax_month" name="tax_month" step="0.01" value="{{ $employee->tax_month }} " class="form-control" readonly>
                                                 <label>WHTax/cut-off</label>
-                                                <input type="number" id="   " name="tax_cutoff" step="0.01" value="{{ $employee->tax_cutoff }}" class="form-control" readonly>
+                                                <input type="number" id="tax_cutoff" name="tax_cutoff" step="0.01" value="{{ $employee->tax_cutoff }}" class="form-control" readonly>
 
                                             </div>
                                         </div>
@@ -856,7 +885,7 @@
         var totalBasicPayPlusOT = parseFloat(document.getElementById('total_basic_pay_plus_ot').value);
         var lateAmount = parseFloat(document.getElementById('late_amount').value);
         var missingCharges = parseFloat(document.getElementById('missing_charges').value);
-        var totalGrosspay = meal + halfallowance + leaveAmount + ndAmount + totalBasicPayPlusOT - (lateAmount + missingCharges);
+        var totalGrosspay = meal + halfallowance + leaveAmount + ndAmount + totalBasicPayPlusOT - lateAmount;
 
         document.getElementById('grosspay').value = totalGrosspay.toFixed(2);
     }
@@ -972,6 +1001,53 @@
 
      }
 
+     function showTax() {
+         var taxcutoff = parseFloat(document.getElementById('tax_cutoff').value) || 0;
+         var showTax =  taxcutoff;
+         document.getElementById('show_tax').value = showTax.toFixed(2);
+
+     }
+
+     function showTax2() {
+         var taxcutoff = parseFloat(document.getElementById('tax_cutoff').value) || 0;
+         var showTax =  taxcutoff;
+         document.getElementById('show_tax2').value = showTax.toFixed(2);
+
+     }
+
+     function calculateTotalDeduction() {
+        var employeepurchase = parseFloat(document.getElementById('employee_purchase').value) || 0;
+        var cashadvance = parseFloat(document.getElementById('cash_advance').value) || 0;
+        var uniform = parseFloat(document.getElementById('uniform').value) || 0;
+        var sssloan = parseFloat(document.getElementById('sss_loan').value) || 0;
+        var hdmfloan = parseFloat(document.getElementById('hdmf_loan').value) || 0;
+        var missingcharges = parseFloat(document.getElementById('missing_charges').value) || 0;
+        var ssspremcontribution = parseFloat(document.getElementById('sss_premcontribution').value) || 0;
+        var ssswisp = parseFloat(document.getElementById('sss_wisp').value) || 0;
+        var phic = parseFloat(document.getElementById('phic').value) || 0;
+        var hdmf = parseFloat(document.getElementById('hdmf').value) || 0;
+        var taxcutoff = parseFloat(document.getElementById('tax_cutoff').value) || 0;
+        var otherdeduction = parseFloat(document.getElementById('otherdeduction').value) || 0;
+
+        var totaldeduction =  employeepurchase + cashadvance + uniform + sssloan + hdmfloan + missingcharges + ssspremcontribution + ssswisp + phic + hdmf  + taxcutoff + otherdeduction;
+
+
+
+         document.getElementById('total_deduction').value = totaldeduction.toFixed(2);
+
+     }
+
+     function calculateNetpay() {
+         var grosspay = parseFloat(document.getElementById('grosspay').value) || 0;
+         var totaldeduction = parseFloat(document.getElementById('total_deduction').value) || 0;
+         var netpay =  grosspay - totaldeduction;
+         document.getElementById('netpay').value = netpay.toFixed(2);
+
+     }
+
+
+
+
     // tax_rate fixed_rate tax_month
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -1033,12 +1109,12 @@
         });
 
         document.getElementById('late_amount').addEventListener('input', function() {
-            calculateTotalCharges();
+
             calculateGrosspay();
         });
 
         document.getElementById('missing_charges').addEventListener('input', function() {
-            calculateTotalCharges();
+
             calculateGrosspay();
         });
 
@@ -1082,6 +1158,9 @@
         calculateTaxRate();
         calculateTaxMonth();
         calculateTaxcutoff();
+        showTax();
+        showTax2();
+        calculateNetpay();
 
     });
 
@@ -1126,6 +1205,10 @@
         calculateTaxRate();
         calculateTaxMonth();
         calculateTaxcutoff();
+        showTax();
+        showTax2();
+        calculateTotalDeduction();
+        calculateNetpay();
     };
 
 
@@ -1220,7 +1303,34 @@
         calculateTaxRate();
         calculateTaxMonth();
         calculateTaxcutoff();
+        showTax();
+        showTax2();
     });
+
+    document.getElementById('tax_cutoff').addEventListener('input', function() {
+        calculateExcess();
+        calculateTaxableincome();
+        calculateTaxRate();
+        calculateTaxMonth();
+        calculateTaxcutoff();
+        showTax();
+        showTax2();
+    });
+
+    document.getElementById('total_deduction').addEventListener('input', function() {
+        calculateExcess();
+        calculateTaxableincome();
+        calculateTaxRate();
+        calculateTaxMonth();
+        calculateTaxcutoff();
+        showTax();
+        showTax2();
+        calculateTotalDeduction();
+        calculateNetpay();
+    });
+
+
+
 
 </script>
 

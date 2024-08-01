@@ -92,7 +92,10 @@ class hrdepartmentController extends Controller
             'tax' => 'nullable|numeric',
             'sss_loan' => 'nullable|numeric',
             'hdmf_loan' => 'nullable|numeric',
+            'employee_purchase' => 'nullable|numeric',
             'uniform' => 'nullable|numeric',
+            'cash_advance' => 'nullable|numeric',
+            'otherdeduction' => 'nullable|numeric',
 
             'employer_sss_premcontribution' => 'nullable|numeric',
             'employer_sss_wisp' => 'nullable|numeric',
@@ -217,7 +220,10 @@ class hrdepartmentController extends Controller
             'tax' => 'nullable|numeric',
             'sss_loan' => 'nullable|numeric',
             'hdmf_loan' => 'nullable|numeric',
+            'employee_purchase' => 'nullable|numeric',
             'uniform' => 'nullable|numeric',
+            'cash_advance' => 'nullable|numeric',
+            'otherdeduction' => 'nullable|numeric',
 
             'employer_sss_premcontribution' => 'nullable|numeric',
             'employer_sss_wisp' => 'nullable|numeric',
@@ -238,6 +244,7 @@ class hrdepartmentController extends Controller
             'fixed_rate' => 'nullable|numeric',
             'tax_month' => 'nullable|numeric',
             'tax_cutoff' => 'nullable|numeric',
+            'total_deduction' => 'nullable|numeric',
 
         ]);
 

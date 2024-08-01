@@ -83,7 +83,10 @@ class hrdepartment extends Model
         'tax',
         'sss_loan',
         'hdmf_loan',
+        'employee_purchase',
         'uniform',
+        'cash_advance',
+        'otherdeduction',
         'employer_sss_premcontribution',
         'employer_sss_wisp',
         'employer_phic',
@@ -101,6 +104,7 @@ class hrdepartment extends Model
         'fixed_rate',
         'tax_month',
         'tax_cutoff',
+        'total_deduction',
 
 
 
