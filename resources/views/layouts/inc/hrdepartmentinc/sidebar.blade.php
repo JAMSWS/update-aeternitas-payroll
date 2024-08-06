@@ -55,7 +55,7 @@
           <li><a href="{{ url('/aeternitas/employee') }}">Employee's</a></li>
           <li><a href="{{ url('/aeternitas/department') }}">Department's</a></li>
           <li><a href="{{ url('/aeternitas/position') }}">Position's</a></li>
-          <li><a href="{{ url('/aeternitas/timekeeping') }}">Time Keeping</a></li>
+          {{-- <li><a href="{{ url('/aeternitas/timekeeping') }}">Time Keeping</a></li> --}}
         </ul>
       </li>
 {{--
@@ -87,7 +87,7 @@
         </ul>
       </li> --}}
 
-
+{{-- 
       <li class="nav-item">
         <a href="{{ url('/aeternitas/attendance') }}">
           <i class='bx bx-plug'></i>
@@ -96,7 +96,7 @@
         <ul class="sub-menu blank">
           <li><a class="link_name" href="{{ url('/aeternitas/attendance') }}">Attendance List</a></li>
         </ul>
-      </li>
+      </li> --}}
 
 
 
