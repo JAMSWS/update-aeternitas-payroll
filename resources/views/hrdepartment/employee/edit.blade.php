@@ -3,6 +3,13 @@
 @section('title', 'Edit Employee | Aeternitas')
 
 @section('content')
+<style>
+    .scrollable-tab-pane {
+        max-height: 60vh; /* Adjust as needed */
+        overflow-y: auto;
+    }
+</style>
+
 
 <div class="row">
     <div class="col-md-12">
@@ -20,75 +27,51 @@
                     @endforeach
                 </div>
                 @endif
-
                 <form action="{{ url('aeternitas/employee/'.$employee->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <hr>
-
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Summary</button>
                         </li>
-
-
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="timekeeping-tab" data-bs-toggle="tab" data-bs-target="#timekeeping-tab-pane" type="button" role="tab" aria-controls="timekeeping-tab-pane" aria-selected="false"> Regular Worked Days</button>
                         </li>
-
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="timekeeping2-tab" data-bs-toggle="tab" data-bs-target="#timekeeping2-tab-pane" type="button" role="tab" aria-controls="timekeeping2-tab-pane" aria-selected="false"> Time Keeping</button>
                         </li>
-
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="Legal-tab" data-bs-toggle="tab" data-bs-target="#Legal-tab-pane" type="button" role="tab" aria-controls="Legal-tab-pane" aria-selected="false"> Legal Worked Days</button>
                         </li>
-
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="Special-tab" data-bs-toggle="tab" data-bs-target="#special-tab-pane" type="button" role="tab" aria-controls="special-tab-pane" aria-selected="false"> Special Worked Days</button>
                         </li>
-
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="OT-tab" data-bs-toggle="tab" data-bs-target="#OT-tab-pane" type="button" role="tab" aria-controls="OT-tab-pane" aria-selected="false"> Overtime </button>
                         </li>
-
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="nd-tab" data-bs-toggle="tab" data-bs-target="#nd-tab-pane" type="button" role="tab" aria-controls="nd-tab-pane" aria-selected="false"> Night Differential</button>
                         </li>
-
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="leave-tab" data-bs-toggle="tab" data-bs-target="#leave-tab-pane" type="button" role="tab" aria-controls="leave-tab-pane" aria-selected="false"> Leave</button>
                         </li>
-
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="late-tab" data-bs-toggle="tab" data-bs-target="#late-tab-pane" type="button" role="tab" aria-controls="late-tab-pane" aria-selected="false"> Late Deduction</button>
                         </li>
-
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="allowance-tab" data-bs-toggle="tab" data-bs-target="#allowance-tab-pane" type="button" role="tab" aria-controls="late-tab-pane" aria-selected="false"> Allowance </button>
                         </li>
-
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="sss-philhealth-pagibig-tab" data-bs-toggle="tab" data-bs-target="#sss-philhealth-pagibig-tab-pane" type="button" role="tab" aria-controls="sss-philhealth-pagibig-tab-pane" aria-selected="false"> SSS - PhilHealh - Pag-ibig </button>
                         </li>
-
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="tax-tab" data-bs-toggle="tab" data-bs-target="#tax-tab-pane" type="button" role="tab" aria-controls="tax-tab-pane" aria-selected="false"> Tax </button>
                         </li>
-
-
-
-
-
-
                     </ul>
-
-
                     <div class="container">
                         <div class="tab-content" id="myTabContent">
-                            <div class="p-3 border tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab">
-
-
+                            <div class="p-3 border tab-pane fade show active scrollable-tab-pane" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <h2 class="text-success">Employee Details</h2> <hr>
@@ -130,10 +113,7 @@
                                                 <input type="text" name="phone_number" value="{{ ($employee->phone_number) }}" class="form-control" placeholder="Enter 10 digit phone number Ex. 9123456789">
                                             </div>
                                         </div>
-
                                     </div>
-
-
                                     <div class="col-md-6">
                                         <h2 class="text-success">Summary Details</h2> <hr>
                                         <div class="mb-3">
@@ -165,14 +145,12 @@
                                         </div>
                                         <div class="mb-3">
                                             <label>Monthly Allowance (₱)</label>
-
                                             <input type="number" id="allowance" name="allowance" value="{{ $employee->allowance }}" class="form-control" step="0.01" required>
                                         </div>
                                         <div class="mb-3">
                                             <label>Total Monthly (₱)</label>
                                             <input type="number" id="total_salary" name="per_month" class="form-control" readonly>
                                         </div>
-
                                         <div class="mb-3">
                                             <label>Bi-Monthly Rate (₱)</label>
                                             <input type="number" id="bi_monthly_total_salary" name="per_bi_month" class="form-control" readonly>
@@ -181,73 +159,58 @@
                                             <label>Equivalent Daily Rate (₱)</label>
                                             <input type="number" id="daily_rate" name="per_day" class="form-control" readonly>
                                         </div>
-
                                         <div class="mb-3">
                                             <label>Total Worked Days</label>
                                             <input type="number" id="total_worked_days" name="total_worked_days" class="form-control" readonly>
                                         </div>
-
                                         <div class="mb-3">
                                             <label>Basic Pay (₱)</label>
                                             <input type="number" id="total_basic_pay" name="total_basic_pay" value="{{ $employee->total_basic_pay }}" class="form-control" readonly>
                                         </div>
-
                                         <div class="mb-3">
                                             <label>Basic Pay + OT (₱) </label>
                                             <input type="number" id="total_basic_pay_plus_ot" name="total_basic_pay_plus_ot" value="#" class="form-control" readonly>
                                         </div>
-
                                         <div class="mb-3">
                                             <label>Gross Pay (₱) <i class="text text-danger"> </i></label>
                                             <input type="number" id="grosspay" name="grosspay" value="{{ $employee->grosspay }}" class="form-control" readonly>
                                         </div>
-
                                         <div class="mb-3">
                                             <label>Total Deduction (₱) <i class="text text-danger"> </i></label>
-                                            <input type="number" id="#" name="#" step="0.01" value="{{ $employee->total_deduction }}" class="form-control" readonly>
+                                            <input type="number" id="#" name="#" step="0.01" value="{{ $employee->total_deduction }}" class="form-control text text-danger" readonly>
                                         </div>
-
                                         <div class="mb-3">
                                             <label>Net Pay (₱) <i class="text text-danger"> Make Sure to update double times to calculate the amount!</i></label>
-                                            <input type="number" id="netpay" name="netpay" value="#" class="form-control" readonly>
+                                            <input type="number" id="netpay" name="netpay" value="#" class="form-control text text-success" readonly>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-
                             {{-- Regular worked days --}}
                             <div class="p-3 border tab-pane fade" id="timekeeping-tab-pane" role="tabpanel" aria-labelledby="timekeeping-tab">
                                 <!-- regular worked days Tab Content -->
                                 <h2 class="text-success">Regular Worked Days</h2> <hr>
                                 <div class="row">
                                     <div class="col-md-12">
-
                                         <div class="mb-3">
                                             <label>Daily Rate (₱)</label>
                                             <input type="number" id="daily_rate"  value="{{ $employee->per_day  }}" class="form-control" readonly>
                                         </div>
-
-
                                         <div class="mb-3">
                                             <label>Regular Worked Days (No. OF DAYS)</label>
                                             <input type="number" id="regular_worked_days" name="regular_worked_days" value="{{ $employee->regular_worked_days }}" class="form-control" Readonly>
                                         </div>
-
                                         <div class="mb-3">
                                             <label>ABSENCES (Input per day, 0.50 = Half Day)</label>
                                             <input type="number" id="absences" step="0.01" name="absences" value="{{ $employee->absences  }}" placeholder="Leave it blank if None" class="form-control">
                                         </div>
-
                                         <div class="mb-3">
-
                                             <label>Amount (₱)</label>  <i class="text text-danger">*Make Sure to update double times to calculate the amount!*</i>
                                             <input type="number" id="rwd_amount" name="rwd_amount" value="#" class="form-control" Readonly>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             {{-- Legal worked days Tab --}}
                             <div class="p-3 border tab-pane fade" id="Legal-tab-pane" role="tabpanel" aria-labelledby="Legal-tab">
                                 <!-- Legal worked days Tab Content -->
@@ -255,22 +218,16 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="mb-3">
-
                                             <label>LH Rate (₱)</label>
                                             <input type="number" id="daily_rate"  value="{{ $employee->per_day  }}" class="form-control" readonly>
-
                                             <label>Legal Holiday Worked Days (No. OF DAYS)</label>
                                             <input type="number" id="legal_worked_days" name="legal_worked_days" step="0.01" placeholder="Leave it blank if None"  value="{{ $employee->legal_worked_days  }}" class="form-control">
-
                                             <label>Total Amount (₱)</label>
                                             <input type="number" id="lhd_amount" name="lhd_amount" step="0.01"   value="{{ $employee->lhd_amount  }}" class="form-control" readonly>
-
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             {{-- Special worked days Tab --}}
                             <div class="p-3 border tab-pane fade" id="special-tab-pane" role="tabpanel" aria-labelledby="special-tab">
                                 <!-- Special worked days Tab Content -->
@@ -290,13 +247,10 @@
                                     </div>
                                 </div>
                             </div>
-
                             {{-- Time keeping Tab --}}
-                            <div class="p-3 border tab-pane fade" id="timekeeping2-tab-pane" role="tabpanel" aria-labelledby="timekeeping2-tab">
+                            <div class="p-3 border tab-pane fade scrollable-tab-pane" id="timekeeping2-tab-pane" role="tabpanel" aria-labelledby="timekeeping2-tab">
                                 <!-- regular worked days Tab Content -->
                                 <h2 class="text-success">Time Keeping</h2> <hr>
-                                
-
                                         <!-- Timekeeping form fields -->
                                         <div class="row">
                                             <div class="col-md-6">
@@ -304,33 +258,27 @@
                                                     <label for="month_rate_paid_days">Month Rate Paid Days</label>
                                                     <input type="number" id="month_rate_paid_days" name="actual_days_worked" value="13"  class="form-control" readonly>
                                                 </div>
-
                                                 <div class="mb-3">
                                                     <label>Vacation Leave/Sick Leave <i class="text text-danger"> (Input per day, 0.50 = Half Day) </i></label>
                                                     <input type="number" id="vlsl" step="0.01" name="vlsl"  value="{{ $employee->vlsl  }}" placeholder="Leave it blank if None" class="form-control">
                                                 </div>
                                                 <hr>
-
                                                 <div class="mb-3">
                                                     <label>SSS - Prem. Contribution</label>
                                                     <input type="number" id="sss_premcontribution" step="0.01" name="sss_premcontribution"  value="{{ $employee->sss_premcontribution  }}" placeholder="Leave it blank if None" class="form-control">
                                                 </div>
-
                                                 <div class="mb-3">
                                                     <label>SSS - WISP</label>
                                                     <input type="number" id="sss_wisp" step="0.01" name="sss_wisp"  value="{{ $employee->sss_wisp  }}" placeholder="Leave it blank if None" class="form-control">
                                                 </div>
-
                                                 <div class="mb-3">
                                                     <label>PHIC</label>
                                                     <input type="number" id="phic" step="0.01" name="phic"  value="{{ $employee->phic  }}" placeholder="Leave it blank if None" class="form-control">
                                                 </div>
-
                                                 <div class="mb-3">
                                                     <label>HDMF</label>
                                                     <input type="number" id="hdmf" step="0.01" name="hdmf"  value="{{ $employee->hdmf  }}" placeholder="Leave it blank if None" class="form-control">
                                                 </div>
-
                                                 <div class="mb-3">
                                                     <label>TAX</label>
                                                     <input type="number" id="show_tax" step="0.01" name="#"  value="#"  class="form-control" readonly>
@@ -341,100 +289,68 @@
                                                     <label>SSS Loan</label>
                                                     <input type="number" id="sss_loan" step="0.01" name="sss_loan"  value="{{ $employee->sss_loan  }}" placeholder="Leave it blank if None" class="form-control">
                                                 </div>
-
                                                 <div class="mb-3">
                                                     <label>HDMF Loan (Pag-ibig)</label>
                                                     <input type="number" id="hdmf_loan" step="0.01" name="hdmf_loan"  value="{{ $employee->hdmf_loan  }}" placeholder="Leave it blank if None" class="form-control">
                                                 </div>
-
                                                 <div class="mb-3">
                                                     <label>EMPLOYEE PURCHASE</label>
                                                     <input type="number" id="employee_purchase" step="0.01" name="employee_purchase"  value="{{ $employee->employee_purchase  }}" placeholder="Leave it blank if None" class="form-control">
                                                 </div>
-
                                                 <div class="mb-3">
                                                     <label>UNIFORM</label>
                                                     <input type="number" id="uniform" step="0.01" name="uniform"  value="{{ $employee->uniform  }}" placeholder="Leave it blank if None" class="form-control">
                                                 </div>
-
                                                 <div class="mb-3">
                                                     <label>CASH advance</label>
                                                     <input type="number" id="cash_advance" step="0.01" name="cash_advance"  value="{{ $employee->cash_advance  }}" placeholder="Leave it blank if None" class="form-control">
                                                 </div>
-
                                                 <div class="mb-3">
                                                     <label>Charges  ₱<i class="text text-danger"> Missing/Loss Item </i></label>
                                                     <input type="number" id="missing_charges" name="missing_charges" value="{{ $employee->missing_charges }}" class="form-control" >
                                                 </div>
                                             </div>
-
                                         </div>
-
-
-
-
                             </div>
-
                             {{-- Overtime tab --}}
-
-                            <div class="p-3 border tab-pane fade" id="OT-tab-pane" role="tabpanel" aria-labelledby="OT-tab">
+                            <div class="p-3 border tab-pane fade scrollable-tab-pane" id="OT-tab-pane" role="tabpanel" aria-labelledby="OT-tab">
                                 <h2 class="text-success">Overtime</h2> <hr>
-
                                 {{-- 25% rate --}}
                                 <div class="mb-3">
                                     <label>Regular Overtime Rate <I class="text text-danger">25%</I>  (₱)  </label>
                                     <input type="number" id="overtime_rate25" name="overtime_rate25" value="{{ $employee->overtime_rate25  }}" class="form-control" Readonly>
-
                                     <label>OT Hours </label>
                                     <input type="number" id="ot_hours25" name="ot_hours25"   value="{{ $employee->ot_hours25  }}" class="form-control" >
-
                                     <label>OT Amount </label>
                                     <input type="number" id="ot_amount25" name="ot_amount25"  value="{{ $employee->ot_amount25  }}"  class="form-control" readonly>
-
                                 </div>
-
                                 <hr>
-
                                 {{-- 30% rate --}}
                                 <div class="mb-3">
                                     <label> Special Overtime Rate <I class="text text-danger">30%</I>  (₱)  </label>
                                     <input type="number" id="overtime_rate30" name="overtime_rate30" value="{{ $employee->overtime_rate30  }}" class="form-control" Readonly>
-
                                     <label>OT Hours </label>
                                     <input type="number" id="ot_hours30" name="ot_hours30"   value="{{ $employee->ot_hours30  }}" class="form-control" >
-
                                     <label>OT Amount </label>
                                     <input type="number" id="ot_amount30" name="ot_amount30"   value="{{ $employee->ot_amount30  }}" class="form-control" readonly>
                                 </div>
-
                                 <hr>
-
                                 {{-- 100% rate --}}
                                 <div class="mb-3">
                                     <label>Legal Overtime Rate <I class="text text-danger">100%</I>  (₱)  </label>
                                     <input type="number" id="overtime_rate100" name="overtime_rate100" value="{{ $employee->overtime_rate100  }}" class="form-control" Readonly>
-
                                     <label>OT Hours </label>
                                     <input type="number" id="ot_hours100" name="ot_hours100"   value="{{ $employee->ot_hours100  }}" class="form-control" >
-
                                     <label>OT Amount </label>
                                     <input type="number" id="ot_amount100" name="ot_amount100"   value="{{ $employee->ot_amount100  }}" class="form-control" readonly>
                                 </div>
-
                                 <hr>
-
                                 <div class="mb-3">
-
                                     <label>Total OT Amount (₱) </label>
                                     <input type="number" id="total_ot" name="total_ot"  value="{{ $employee->total_ot }}" class="form-control" readonly>
                                 </div>
-
-
                             </div>
-
                             {{-- OT tab --}}
-
-
                             {{-- Night Differential --}}
                             <div class="p-3 border tab-pane fade" id="nd-tab-pane" role="tabpanel" aria-labelledby="nd-tab">
                                 <h2 class="text-success">Night Differential</h2> <hr>
@@ -456,71 +372,51 @@
                                     <label>Daily Rate (₱) </label>
                                     <input type="number" id="daily_rate"  value="{{ $employee->per_day }}" class="form-control" Readonly>
                                 </div>
-
                                 <div class="mb-3">
                                     <label>Credit Points</label>
                                     <input type="number" id="#"  value="#" class="form-control" readonly>
                                 </div>
-
                                 <div class="mb-3">
                                     <label>USED (Current Cut-off) </label>
                                     <input type="number" id="used_current_cut_off" value="{{ $employee->vlsl  }}" class="form-control" Readonly>
                                 </div>
-
                                 <div class="mb-3">
                                     <label>Leave Amount (₱)</label>
                                     <input type="number" id="leave_amount" name="leave_amount"  value="{{ $employee->leave_amount }}" class="form-control" Readonly>
                                 </div>
                             </div>
-
                             {{-- Late deduction tab --}}
                             <div class="p-3 border tab-pane fade" id="late-tab-pane" role="tabpanel" aria-labelledby="late-tab">
                                 <h2 class="text-success">Late Deduction</h2> <hr>
                                     <div class="mb-3">
                                         <label> Rate/Min (₱)</label>
                                         <input type="number" id="late_rate" name="late_rate" value="{{ $employee->late_rate }}" class="form-control" Readonly>
-
                                         <label> Number Of Minutes </label>
                                         <input type="number" id="number_of_minutes_late" name="number_of_minutes_late" value="{{ $employee->number_of_minutes_late }}" class="form-control" >
-
                                         <label>Late Amount (₱)</label>
                                         <input type="number" id="late_amount" name="late_amount"   value="{{ $employee->late_amount }}" class="form-control" readonly>
                                     </div>
-
                                     <hr>
-
                                     <div class="mb-3">
-
-
-
                                         {{-- <label>Total Charges (₱) <i class="text text-danger"></i> </label> --}}
                                         <input type="number" id="total_charges" name="total_charges" value="{{ $employee->total_charges }}"  class="form-control" readonly hidden>
                                     </div>
-
                             </div>
-
                             {{-- Allowance tab --}}
                             <div class="p-3 border tab-pane fade" id="allowance-tab-pane" role="tabpanel" aria-labelledby="allowance-tab">
                                 <h2 class="text-success">Allowance</h2> <hr>
                                     <div class="mb-3">
                                         <label> Allowance (₱)</label>
                                         <input type="number" id="half_allowance" name="half_allowance" value="{{ $employee->half_allowance }}" class="form-control" Readonly>
-
                                         <label> Meal (₱)</label>
                                         <input type="number" id="meal_allowance" name="meal_allowance" value="{{ $employee->meal_allowance }}" class="form-control" >
-
                                     </div>
-
                             </div>
-
-
                             {{-- SSS - Phil Health - Pag-ibig - tax --}}
-                            <div class="p-3 border tab-pane fade" id="sss-philhealth-pagibig-tab-pane" role="tabpanel" aria-labelledby="sss-philhealth-pagibig-tab">
+                            <div class="p-3 border tab-pane fade scrollable-tab-pane" id="sss-philhealth-pagibig-tab-pane" role="tabpanel" aria-labelledby="sss-philhealth-pagibig-tab">
                                 <h2 class="text-success">SSS - PHILHEALTH - PAG-IBIG - TAX</h2> <hr>
                                     <div class="mb-3">
                                         <div class="row">
-
-
                                             <div class="col-md-6">
                                                 <label> <b> Loan</b></label> <br>
                                                 <label> Employee Purchase</label>
@@ -529,75 +425,52 @@
                                                 <input type="number" id="#" name="#" value="{{ $employee->cash_advance }}"  class="form-control" readonly>
                                                 <label> Uniforms </label>
                                                 <input type="number" id="#" name="#" value="{{ $employee->uniform }}" class="form-control" readonly>
-
                                                 <hr>
-
                                                 <label> SSS Loan (₱)</label>
                                                 <input type="number" id="#" name="#" value="{{ $employee->sss_loan }}" class="form-control" readonly>
 
                                                 <label> Pag-Ibig Loan (₱)</label>
                                                 <input type="number" id="#" name="#" value="{{ $employee->hdmf_loan }}" class="form-control" readonly>
-
                                                 <hr>
-
                                                 <label> Other Deduction (₱)</label>
                                                 <input type="number" id="otherdeduction" name="otherdeduction" value="{{ $employee->otherdeduction }}" class="form-control" step="0.01" >
-
-
                                             </div>
-
                                             <div class="col-md-6">
                                                 <label> <b> SSS - Prem. Contribution</b></label> <br>
-
                                                 <label> EMPLOYEE</label>
                                                 <input type="number" id="show_sss_premcontribution" name="show_sss_premcontribution" value="#" class="form-control" readonly>
                                                 <label> EMPLOYEER</label>
                                                 <input type="number" id="employer_sss_premcontribution" step="0.01" name="employer_sss_premcontribution" value="{{ $employee->employer_sss_premcontribution }}" class="form-control" >
-
                                                 <hr>
-
                                                 <label> <b> SSS - WISP</b></label> <br>
-
                                                 <label> EMPLOYEE</label>
                                                 <input type="number" id="show_sss_wisp" name="show_sss_wisp" value="#" class="form-control" readonly>
                                                 <label> EMPLOYEER</label>
                                                 <input type="number" id="employer_sss_wisp" step="0.01" name="employer_sss_wisp" value="{{ $employee->employer_sss_wisp }}" class="form-control" >
-
                                                 <hr>
-
                                                 <label> <b> PHILHEALTH</b></label> <br>
-
                                                 <label> EMPLOYEE</label>
                                                 <input type="number" id="show_phic" name="show_phic" value="#" class="form-control" readonly>
                                                 <label> EMPLOYEER</label>
                                                 <input type="number" id="employer_phic" step="0.01" name="employer_phic" value="{{ $employee->employer_phic }}" class="form-control" >
-
                                                 <hr>
-
                                                 <label> <b> HDMF</b></label> <br>
-
                                                 <label> EMPLOYEE</label>
                                                 <input type="number" id="show_hdmf" name="show_hdmf" value="#" class="form-control" readonly>
                                                 <label> EMPLOYEER</label>
                                                 <input type="number" id="employer_hdmf" step="0.01" name="employer_hdmf" value="{{ $employee->employer_hdmf }}" class="form-control" >
-
                                                 <hr>
-
                                                 <label> TAX (₱)</label>
                                                 <input type="number" id="show_tax2" name="#" value="#" class="form-control" readonly>
-
                                                 <hr>
-
                                                 <label> Total Deductions (₱)</label>
                                                 <input type="number" id="total_deduction" name="total_deduction" step="0.01" value="#" class="form-control" readonly>
                                             </div>
-
                                         </div>
                                     </div>
                             </div>
-
                             {{-- TAX TAB --}}
-                            <div class="p-3 border tab-pane fade" id="tax-tab-pane" role="tabpanel" aria-labelledby="tax-tab">
+                            <div class="p-3 border tab-pane fade scrollable-tab-pane" id="tax-tab-pane" role="tabpanel" aria-labelledby="tax-tab">
                                 <h2 class="text-success">TAX</h2> <hr>
                                     <div class="mb-3">
                                         <div class="row">
@@ -617,7 +490,6 @@
                                                 <label>Taxable Income</label>
                                                 <input type="number" id="taxable_income" name="taxable_income" value="{{ $employee->taxable_income }}" class="form-control" readonly>
                                             </div>
-
                                             <div class="col-md-6">
                                                 <label>CL</label>
                                                 <input type="number" id="tax_cl" name="tax_cl" value="{{ $employee->tax_cl }}" class="form-control" >
@@ -632,16 +504,10 @@
                                                 <input type="number" id="tax_month" name="tax_month" step="0.01" value="{{ $employee->tax_month }} " class="form-control" readonly>
                                                 <label>WHTax/cut-off</label>
                                                 <input type="number" id="tax_cutoff" name="tax_cutoff" step="0.01" value="{{ $employee->tax_cutoff }}" class="form-control" readonly>
-
                                             </div>
                                         </div>
-
                                     </div>
-
-
                             </div>
-
-
                         </div>
                         <div>
                             <button type="submit" class="mt-3 text-white btn btn-primary">Update</button>
