@@ -113,6 +113,21 @@
                                                 <input type="text" name="phone_number" value="{{ ($employee->phone_number) }}" class="form-control" placeholder="Enter 10 digit phone number Ex. 9123456789">
                                             </div>
                                         </div>
+                                        <div class="mb-3">
+                                            <label>Payroll Period</label>
+                                            <hr>
+                                            <div class="d-flex">
+                                                <div class="me-2">
+                                                    <label for="start_date" class="form-label">Start Date</label>
+                                                    <input type="date" id="start_date" value="{{ ($employee->start_date_payroll) }}" name="start_date_payroll" class="form-control" required>
+                                                </div>
+                                                <div>
+                                                    <label for="end_date" class="form-label">End Date</label>
+                                                    <input type="date" id="end_date" value="{{ ($employee->end_date_payroll) }}" name="end_date_payroll" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div class="col-md-6">
                                         <h2 class="text-success">Summary Details</h2> <hr>
@@ -179,6 +194,7 @@
                                             <label>Total Deduction (₱) <i class="text text-danger"> </i></label>
                                             <input type="number" id="#" name="#" step="0.01" value="{{ $employee->total_deduction }}" class="form-control text text-danger" readonly>
                                         </div>
+                                        <hr>
                                         <div class="mb-3">
                                             <label>Net Pay (₱) <i class="text text-danger"> Make Sure to update double times to calculate the amount!</i></label>
                                             <input type="number" id="netpay" name="netpay" value="#" class="form-control text text-success" readonly>
@@ -1246,6 +1262,26 @@
         });
     });
 </script>
+
+<script>
+    document.getElementById('start_date').addEventListener('change', function() {
+        var startDate = new Date(this.value);
+        var endDate = new Date(document.getElementById('end_date').value);
+        if (endDate < startDate) {
+            alert('End date cannot be before the start date.');
+            document.getElementById('end_date').value = '';
+        }
+    });
+
+    document.getElementById('end_date').addEventListener('change', function() {
+        var endDate = new Date(this.value);
+        var startDate = new Date(document.getElementById('start_date').value);
+        if (endDate < startDate) {
+            alert('End date cannot be before the start date.');
+            document.getElementById('end_date').value = '';
+        }
+    });
+    </script>
 
 
 

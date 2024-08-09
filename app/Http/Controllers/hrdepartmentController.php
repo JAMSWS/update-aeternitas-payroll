@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\hrdepartment;
 use App\Models\positionlist;
 use Illuminate\Http\Request;
+use App\Mail\employeeMailable;
 use App\Models\departmentlist;
+use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreEmployeeRequest;
+
 
 class hrdepartmentController extends Controller
 {
@@ -48,6 +53,10 @@ class hrdepartmentController extends Controller
             'sex' => 'nullable|string',
             'age' => 'nullable|numeric',
             'per_month' => 'nullable|numeric',
+
+            'start_date_payroll' => 'nullable|date',
+            'end_date_payroll' => 'nullable|date|after_or_equal:start_date',
+
             'per_day' => 'nullable|numeric',
             'per_bi_month' => 'nullable|numeric',
             'actual_days_worked' => 'nullable|numeric',
@@ -178,6 +187,10 @@ class hrdepartmentController extends Controller
             'sex' => 'nullable|string',
             'age' => 'nullable|numeric',
             'per_month' => 'nullable|numeric',
+
+            'start_date_payroll' => 'nullable|date',
+            'end_date_payroll' => 'nullable|date|after_or_equal:start_date',
+
             'per_day' => 'nullable|numeric',
             'per_bi_month' => 'nullable|numeric',
             'actual_days_worked' => 'nullable|numeric',
@@ -271,4 +284,50 @@ class hrdepartmentController extends Controller
 
         return redirect()->route('employees.index')->with('message', 'Employee Deleted Successfully');
     }
+
+
+    public function viewEmployee(int $employee_id)
+    {
+
+        $department = departmentlist::all();
+        $position = positionlist::all();
+
+        $employee = hrdepartment::findOrFail($employee_id);
+        return view('hrdepartment.employee.generate-employee', compact('employee','department','position'));
+    }
+
+    public function generateEmployee(int $employee_id)
+    {
+
+        $employee = hrdepartment::findOrFail($employee_id);
+        $department = departmentlist::all();
+        $position = positionlist::all();
+        $data = [ 'employee' => $employee];
+
+
+        $pdf = Pdf::loadview('hrdepartment.employee.generate-employee', $data);
+        $todayDate = Carbon::now()->format('d-m-Y');
+        return $pdf->download('employee'.$employee->id.'-'.$todayDate.'.pdf');
+
+
+    }
+
+    public function mailEmployee(int $employee_id)
+    {
+        try {
+            $employee = hrdepartment::findOrFail($employee_id);
+            Mail::to($employee->email_address)->send(new EmployeeMailable($employee));
+            return redirect('aeternitas/employee/')->with('message', 'Payslip has been sent to '. $employee->email_address);
+        } catch (\Exception $e) {
+            return redirect('aeternitas/employee/')->with('message', 'Something went wrong! and not send to '.$employee->email_address);
+        }
+    }
+
+
+
+
+
 }
+
+
+

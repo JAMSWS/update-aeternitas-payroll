@@ -31,6 +31,10 @@ return new class extends Migration
             $table->decimal('allowance', 10, 2);
             $table->decimal('per_bi_month', 10, 2)->nullable();
             $table->decimal('per_month', 10, 2)->nullable();
+
+            $table->date('start_date_payroll')->nullable();
+            $table->date('end_date_payroll')->nullable();
+
             $table->integer('actual_days_worked')->nullable();
             $table->decimal('absences',10, 2)->nullable();
             $table->decimal('vlsl',10, 2)->nullable();

@@ -35,6 +35,10 @@ class StoreEmployeeRequest extends FormRequest
             'sex' => 'nullable|string',
             'age' => 'nullable|numeric',
             'per_month' => 'nullable|numeric',
+
+            'start_date_payroll' => 'nullable|date',
+            'end_date_payroll' => 'nullable|date|after_or_equal:start_date',
+
             'per_day' => 'nullable|numeric',
             'per_bi_month' => 'nullable|numeric',
             'actual_days_worked' => 'nullable|numeric',

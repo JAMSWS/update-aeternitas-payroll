@@ -9,9 +9,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                {{-- <h4>Add Products
-                    <a href="{{ url('sellercenter/products')}}" class="text-white btn btn-danger float-end">Back</a>
-                </h4> --}}
+
             </div>
             <div class="card-body">
                 <h4>Add Employee</h4>
@@ -28,19 +26,6 @@
                 <form action="{{ url('aeternitas/employee') }}" method="POST">
                     @csrf
 
-
-                {{-- <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-tab-pane" type="button" role="tab" aria-controls="details-tab-pane" aria-selected="false">Details</button>
-                    </li>
-
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-tab-pane" type="button" role="tab" aria-controls="image-tab-pane" aria-selected="false">Product Image</button>
-                      </li>
-
-
-
-                    </ul> --}}
                   <div class="tab-content" id="myTabContent">
                     <div class="p-3 border tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                         <div class="mb-3">
@@ -57,7 +42,7 @@
                                 <option value="{{ $departments->department }}">{{ $departments->department }}</option>
                                 @endforeach
                             </select>
-                            {{-- <input type="text" name="department_name" class="form-control"required> --}}
+
                             <label>Position</label>
                             <select name="position_name" class="form-control">
                                 @foreach ($position as $positions)
@@ -66,7 +51,7 @@
                             </select>
 
 
-                            {{-- <input type="text" name="position_name" class="form-control"required> --}}
+
                             <label>Basic Pay <i class="text-danger "> (Monthly Pay)</i></label>
                             <select name="basic_pay" class="form-control" required>
                                 <option value="16000.00">₱16,000.00</option>
@@ -78,59 +63,25 @@
                             </select>
                             <label>Monthly Allowance</label>
                             <input type="number" name="allowance" class="form-control" step="0.01" required>
-
-                        </div>
-                        {{-- <div class="mb-3">
-                        <label>Description</label>
-                        <textarea name="description" class="form-control" rows="10"></textarea>
-                        </div> --}}
-                    </div>
-                    {{-- <div class="p-3 border tab-pane fade" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3">
-
-                                    <div class="mb-3">
-                                        <label>Original price</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text">₱</span>
-                                            <input type="number" step="0.01" name="original_price" class="form-control">
-                                        </div>
+                            <hr>
+                            <div class="mb-3">
+                                <label>Payroll Period</label>
+                                <div class="d-flex">
+                                    <div class="me-2">
+                                        <label for="start_date" class="form-label">Start Date</label>
+                                        <input type="date" id="start_date_payroll" name="start_date_payroll" class="form-control" required>
                                     </div>
-
-
-                                    <div class="mb-3">
-                                        <label>Selling price</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text">₱</span>
-                                            <input type="number" step="0.01" name="selling_price" class="form-control">
-                                        </div>
+                                    <div>
+                                        <label for="end_date" class="form-label">End Date</label>
+                                        <input type="date" id="end_date_payroll" name="end_date_payroll" class="form-control" required>
                                     </div>
-
-                                    <div class="mb-3">
-                                        <label>Quantity</label>
-                                        <input type="text" name="quantity" class="form-control">
-                                    </div>
-
-                                    <div class="mb-3"  style="display: none;"   >
-                                        <label>Trending</label>
-                                        <input type="checkbox" name="trending" checked>
-                                    </div>
-
-
-
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
-                    <div class="p-3 border tab-pane fade" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
-                        <div class="mb-3">
-                            <label>Upload Product Images</label>
-                            <input type="file" name="image[]" multiple class="form-control"/>
 
-                        </div>
-
-                    </div> --}}
 
 
                   </div>
@@ -145,5 +96,26 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('start_date_payroll').addEventListener('change', function() {
+        var startDate = new Date(this.value);
+        var endDate = new Date(document.getElementById('end_date_payroll').value);
+        if (endDate < startDate) {
+            alert('End date cannot be before the start date.');
+            document.getElementById('end_date_payroll').value = '';
+        }
+    });
+
+    document.getElementById('end_date_payroll').addEventListener('change', function() {
+        var endDate = new Date(this.value);
+        var startDate = new Date(document.getElementById('start_date_payroll').value);
+        if (endDate < startDate) {
+            alert('End date cannot be before the start date.');
+            document.getElementById('end_date_payroll').value = '';
+        }
+    });
+    </script>
+
 
 @endsection

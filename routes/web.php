@@ -27,6 +27,9 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('aeternitas')->group(function() {
 
+    Route::get('payslips/send/{id}', [PayslipController::class, 'sendPayslip'])->name('payslips.send');
+    Route::get('/send-payslip/{id}', [PayslipController::class, 'sendPayslip']);
+
 
     Route::get('/payslip/{id}/pdf', [PayslipController::class, 'generatePDF'])->name('payslip.pdf');
         //this is for hr department that add employee and etc...
@@ -34,10 +37,20 @@ Route::prefix('aeternitas')->group(function() {
     Route::get('/employee', 'index')->name('employees.index');
     Route::get('/employee/create', 'create')->name('employees.create');
     Route::post('/employee', 'store')->name('employees.store');
+
+
     Route::get('/employee/{id}', 'show')->name('employees.show');
+
+
     Route::get('/employee/{id}/edit', 'edit')->name('employees.edit');
     Route::put('/employee/{id}', 'update')->name('employees.update');
     Route::delete('/employee/{id}', 'destroy')->name('employees.destroy');
+
+    Route::get('/payslip/{id}', 'viewEmployee');
+    Route::get('/payslip/{id}/generate', 'generateEmployee');
+
+    Route::get('/payslip/{id}/mail', 'mailEmployee');
+
 
     });
 

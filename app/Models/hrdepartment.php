@@ -24,6 +24,8 @@ class hrdepartment extends Model
         'pay_type',
         'per_day',
         'per_month',
+        'start_date_payroll',
+        'end_date_payroll',
         'sss_number',
         'philhealth_number',
         'pagibig_number',
@@ -106,6 +108,7 @@ class hrdepartment extends Model
         'tax_cutoff',
         'total_deduction',
         'netpay',
+
 
 
 

@@ -3,6 +3,8 @@
 @section('title', 'Employee List | Aeternitas')
 
 @section('content')
+
+
     <div class="row">
         @if(session('message'))
         <div class="alert alert-success">{{ session('message') }}</div>
@@ -20,6 +22,7 @@
                 <thead>
                     <tr>
                         <th>Employee Number</th>
+                        <th>Date Period</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Department</th>
@@ -33,6 +36,7 @@
                     @forelse ($employees as $employee)
                     <tr>
                         <td>{{ $employee->custom_id }}</td>
+                        <td>{{ $employee->start_date_payroll }} - {{ $employee->end_date_payroll }}</td>
                         <td>{{ $employee->first_name }}</td>
                         <td>{{ $employee->last_name }}</td>
                         <td>
@@ -52,7 +56,7 @@
                         <td>₱ {{ number_format($employee->basic_pay, 2) }}</td>
                         <td>₱ {{ number_format($employee->allowance, 2) }}</td>
                         <td>
-                            <a href="{{ route('employees.show', $employee->id) }}" class="text-white btn btn-primary" target="_blank">Show</a>
+                            <a href="{{ route('employees.show', $employee->id) }}" class="text-white btn btn-primary">Show</a>
                             <a href="{{ route('employees.edit', $employee->id) }}" class="text-white btn btn-success">Edit</a>
                             <form action="{{ route('employees.destroy', $employee->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
