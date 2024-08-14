@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDepartmentRequest extends FormRequest
+class StorePayrollperiodRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,9 @@ class StoreDepartmentRequest extends FormRequest
     {
         return [
             //
-            'department' => 'required',
+            'startpayrollperiod' => 'required',
+            'endpayrollperiod' => 'required',
+
         ];
     }
 }

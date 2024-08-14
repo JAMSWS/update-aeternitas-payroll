@@ -65,16 +65,44 @@
                             <input type="number" name="allowance" class="form-control" step="0.01" required>
                             <hr>
                             <div class="mb-3">
-                                <label>Payroll Period</label>
+                                <label>Payroll Period (Y - M - D)</label>
                                 <div class="d-flex">
-                                    <div class="me-2">
+                                    {{-- <div class="me-2">
                                         <label for="start_date" class="form-label">Start Date</label>
                                         <input type="date" id="start_date_payroll" name="start_date_payroll" class="form-control" required>
                                     </div>
                                     <div>
                                         <label for="end_date" class="form-label">End Date</label>
                                         <input type="date" id="end_date_payroll" name="end_date_payroll" class="form-control" required>
-                                    </div>
+                                    </div> --}}
+
+                                    {{-- <select name="payrollperiod" class="form-control">
+                                        @foreach ($payrollperiod as $payrollperiods)
+                                            @php
+                                                $startFormatted = \Carbon\Carbon::parse($payrollperiods->startpayrollperiod)->format('F d, Y');
+                                                $endFormatted = \Carbon\Carbon::parse($payrollperiods->endpayrollperiod)->format('F d, Y');
+                                            @endphp
+                                            <option value="{{ $payrollperiods->startpayrollperiod }} - {{ $payrollperiods->endpayrollperiod }}">
+                                                {{ $startFormatted }} - {{ $endFormatted }}
+                                            </option>
+                                        @endforeach
+                                    </select> --}}
+
+
+                                    <select name="payrollperiod" class="form-control">
+                                        @foreach ($payrollperiod as $payrollperiods)
+                                            @php
+                                                $startFormatted = \Carbon\Carbon::parse($payrollperiods->startpayrollperiod)->format('F d, Y');
+                                                $endFormatted = \Carbon\Carbon::parse($payrollperiods->endpayrollperiod)->format('F d, Y');
+                                                $rawValue = $payrollperiods->startpayrollperiod . ' - ' . $payrollperiods->endpayrollperiod;
+                                            @endphp
+                                            <option value="{{ $rawValue }}">
+                                                {{ $startFormatted }} - {{ $endFormatted }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+
                                 </div>
                             </div>
 

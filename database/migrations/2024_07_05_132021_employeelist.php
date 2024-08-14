@@ -32,6 +32,8 @@ return new class extends Migration
             $table->decimal('per_bi_month', 10, 2)->nullable();
             $table->decimal('per_month', 10, 2)->nullable();
 
+            $table->string('payrollperiod')->nullable();
+
             $table->date('start_date_payroll')->nullable();
             $table->date('end_date_payroll')->nullable();
 

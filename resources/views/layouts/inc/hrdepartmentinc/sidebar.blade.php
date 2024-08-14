@@ -58,6 +58,26 @@
           {{-- <li><a href="{{ url('/aeternitas/timekeeping') }}">Time Keeping</a></li> --}}
         </ul>
       </li>
+
+      <li class="nav-item">
+        <a href="/aeternitas/debitmemo">
+          <i class='bx bx-grid-alt' ></i>
+          <span class="link_name">Debit Memo</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="/aeternitas/debitmemo">Debit Memo</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a href="/aeternitas/payrollperiod">
+          <i class='bx bx-grid-alt' ></i>
+          <span class="link_name">Payroll Period</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="/aeternitas/payrollperiod">Payroll Period</a></li>
+        </ul>
+      </li>
 {{--
      <li class="nav-item ">
         <div class="iocn-link">
@@ -87,7 +107,7 @@
         </ul>
       </li> --}}
 
-{{-- 
+{{--
       <li class="nav-item">
         <a href="{{ url('/aeternitas/attendance') }}">
           <i class='bx bx-plug'></i>

@@ -26,6 +26,7 @@ class hrdepartment extends Model
         'per_month',
         'start_date_payroll',
         'end_date_payroll',
+        'payrollperiod',
         'sss_number',
         'philhealth_number',
         'pagibig_number',

@@ -1,9 +1,4 @@
-@php
-    use Carbon\Carbon;
 
-    $startDate = Carbon::parse($employee->start_date_payroll);
-    $endDate = Carbon::parse($employee->end_date_payroll);
-@endphp
 
 <!DOCTYPE html>
 <html lang="en">
@@ -299,7 +294,15 @@
                 </tr>
                 <tr>
                     <th>Payroll Period</th>
-                    <td>{{ $startDate->format('F d, Y') }} - {{ $endDate->format('F d, Y') }}</td>
+                    <td>
+                        @php
+                            // Extract start and end dates from payrollperiod
+                            $dates = explode(' - ', $employee->payrollperiod);
+                            $start = \Carbon\Carbon::parse($dates[0])->format('F d, Y');
+                            $end = \Carbon\Carbon::parse($dates[1])->format('F d, Y');
+                        @endphp
+                        {{ $start }} - {{ $end }}
+                    </td>
                 </tr>
             </table>
         </div>

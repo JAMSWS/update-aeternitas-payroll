@@ -36,7 +36,15 @@
                     @forelse ($employees as $employee)
                     <tr>
                         <td>{{ $employee->custom_id }}</td>
-                        <td>{{ $employee->start_date_payroll }} - {{ $employee->end_date_payroll }}</td>
+                        <td>
+                            @php
+                                // Extract start and end dates from payrollperiod
+                                $dates = explode(' - ', $employee->payrollperiod);
+                                $start = \Carbon\Carbon::parse($dates[0])->format('F d, Y');
+                                $end = \Carbon\Carbon::parse($dates[1])->format('F d, Y');
+                            @endphp
+                            {{ $start }} - {{ $end }}
+                        </td>
                         <td>{{ $employee->first_name }}</td>
                         <td>{{ $employee->last_name }}</td>
                         <td>

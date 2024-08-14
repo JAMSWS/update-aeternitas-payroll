@@ -117,14 +117,35 @@
                                             <label>Payroll Period</label>
                                             <hr>
                                             <div class="d-flex">
-                                                <div class="me-2">
+                                                {{-- <div class="me-2">
                                                     <label for="start_date" class="form-label">Start Date</label>
                                                     <input type="date" id="start_date" value="{{ ($employee->start_date_payroll) }}" name="start_date_payroll" class="form-control" required>
                                                 </div>
                                                 <div>
                                                     <label for="end_date" class="form-label">End Date</label>
                                                     <input type="date" id="end_date" value="{{ ($employee->end_date_payroll) }}" name="end_date_payroll" class="form-control" required>
-                                                </div>
+                                                </div> --}}
+
+
+                                                <select name="payrollperiod" class="form-control">
+                                                    @foreach ($payrollperiod as $payrollperiods)
+                                                        @php
+                                                            $startFormatted = \Carbon\Carbon::parse($payrollperiods->startpayrollperiod)->format('F d, Y');
+                                                            $endFormatted = \Carbon\Carbon::parse($payrollperiods->endpayrollperiod)->format('F d, Y');
+                                                            $rawValue = $payrollperiods->startpayrollperiod . ' - ' . $payrollperiods->endpayrollperiod;
+                                                            $formattedValue = $startFormatted . ' - ' . $endFormatted;
+                                                        @endphp
+
+                                                        <option value="{{ $rawValue }}"
+                                                            @if ($employee->payrollperiod == $rawValue)
+                                                                selected
+                                                            @endif>
+                                                            {{ $formattedValue }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+
+
                                             </div>
                                         </div>
 
@@ -135,7 +156,7 @@
                                             <label>Department</label>
                                             <select name="department_name" class="form-control">
                                                 @foreach ($department as $departments)
-                                                <option value="{{ $departments->department }}" {{ $employee->department_name == $departments->department ? 'selected' : '' }}>{{ $departments->department }}</option>
+                                                <option value="{{ $employee->department_name }}" {{ $employee->department_name == $departments->department ? 'selected' : '' }}>{{ $departments->department }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -143,7 +164,7 @@
                                             <label>Position</label>
                                             <select name="position_name" class="form-control">
                                                 @foreach ($position as $positions)
-                                                <option value="{{ $positions->position }}" {{ $employee->position_name == $positions->position ? 'selected' : '' }}>{{ $positions->position }}</option>
+                                                <option value="{{ $employee->position_name }}" {{ $employee->position_name == $positions->position ? 'selected' : '' }}>{{ $positions->position }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

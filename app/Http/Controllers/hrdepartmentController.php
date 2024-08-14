@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\hrdepartment;
 use App\Models\positionlist;
 use Illuminate\Http\Request;
+use App\Models\payrollperiod;
 use App\Mail\employeeMailable;
 use App\Models\departmentlist;
 use Illuminate\Support\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreEmployeeRequest;
-
 
 class hrdepartmentController extends Controller
 {
@@ -32,7 +32,8 @@ class hrdepartmentController extends Controller
         //
         $department = departmentlist::all();
         $position = positionlist::all();
-        return view('hrdepartment.employee.create',compact('department', 'position'));
+        $payrollperiod = payrollperiod::all();
+        return view('hrdepartment.employee.create',compact('department', 'position', 'payrollperiod'));
     }
 
     /**
@@ -53,6 +54,8 @@ class hrdepartmentController extends Controller
             'sex' => 'nullable|string',
             'age' => 'nullable|numeric',
             'per_month' => 'nullable|numeric',
+
+            'payrollperiod' => 'required',
 
             'start_date_payroll' => 'nullable|date',
             'end_date_payroll' => 'nullable|date|after_or_equal:start_date',
@@ -131,6 +134,8 @@ class hrdepartmentController extends Controller
 
         ]);
 
+        
+
         // Generate custom ID
         $latestEmployee = hrdepartment::latest()->first();
         $latestId = $latestEmployee ? intval(substr($latestEmployee->custom_id, 4)) : 0;
@@ -162,8 +167,10 @@ class hrdepartmentController extends Controller
     {
         $department = departmentlist::all();
         $position = positionlist::all();
+        $payrollperiod = payrollperiod::all();
         $employee = hrdepartment::findOrFail($employee_id);
-        return view('hrdepartment.employee.edit', compact('employee','department','position'));
+        return view('hrdepartment.employee.edit', compact('employee','department','position',
+    'payrollperiod'));
     }
 
     /**
@@ -187,6 +194,8 @@ class hrdepartmentController extends Controller
             'sex' => 'nullable|string',
             'age' => 'nullable|numeric',
             'per_month' => 'nullable|numeric',
+
+            'payrollperiod' => 'required',
 
             'start_date_payroll' => 'nullable|date',
             'end_date_payroll' => 'nullable|date|after_or_equal:start_date',
@@ -291,6 +300,7 @@ class hrdepartmentController extends Controller
 
         $department = departmentlist::all();
         $position = positionlist::all();
+        $payrollperiod = payrollperiod::all();
 
         $employee = hrdepartment::findOrFail($employee_id);
         return view('hrdepartment.employee.generate-employee', compact('employee','department','position'));
@@ -302,6 +312,7 @@ class hrdepartmentController extends Controller
         $employee = hrdepartment::findOrFail($employee_id);
         $department = departmentlist::all();
         $position = positionlist::all();
+        $payrollperiod = payrollperiod::all();
         $data = [ 'employee' => $employee];
 
 

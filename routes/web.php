@@ -88,14 +88,28 @@ Route::prefix('aeternitas')->group(function() {
 
     //This is for time keeping
     Route::controller(App\Http\Controllers\timekeepingController::class)->group(function () {
-        Route::get('/timekeeping', 'index')->name('timekeeping.index');
-        Route::get('/timekeeping/create', 'create')->name('timekeeping.create');
-        Route::post('/timekeeping', 'store')->name('timekeeping.store');
-        Route::get('/timekeeping/{id}/edit', 'edit')->name('timekeeping.edit');
-        Route::put('/timekeeping/{id}', 'update')->name('timekeeping.update');
-        Route::delete('/timekeeping/{id}', 'destroy')->name('timekeeping.destroy');
+    Route::get('/timekeeping', 'index')->name('timekeeping.index');
+    Route::get('/timekeeping/create', 'create')->name('timekeeping.create');
+    Route::post('/timekeeping', 'store')->name('timekeeping.store');
+    Route::get('/timekeeping/{id}/edit', 'edit')->name('timekeeping.edit');
+    Route::put('/timekeeping/{id}', 'update')->name('timekeeping.update');
+    Route::delete('/timekeeping/{id}', 'destroy')->name('timekeeping.destroy');
+    });
 
-        });
+    // Debit Memo
+    Route::controller(App\Http\Controllers\debitmemoController::class)->group(function () {
+    Route::get('/debitmemo', 'index')->name('debitmemo.index');
+    });
+
+    // Payroll Period
+    Route::controller(App\Http\Controllers\payrollperiodController::class)->group(function () {
+    Route::get('/payrollperiod', 'index')->name('payrollperiod.index');
+    Route::get('/payrollperiod/create', 'create')->name('payrollperiod.create');
+    Route::post('/payrollperiod', 'store')->name('payrollperiod.store');
+    Route::get('/payrollperiod/{id}/edit', 'edit')->name('payrollperiod.edit');
+    Route::put('/payrollperiod/{id}', 'update')->name('payrollperiod.update');
+    Route::delete('/payrollperiod/{id}', 'destroy')->name('payrollperiod.destroy');
+    });
 
 
 
